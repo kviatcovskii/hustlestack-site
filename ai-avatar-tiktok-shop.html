@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+:root {
+  --paper: #F3EFE7; --paper-raised: #FAF8F3; --ink: #1A1A1A; --muted: #6B6357;
+  --accent: #9C7A4F; --accent-ink: #7A5F3D; --line: #DCD5C7; --gold: #9C7A4F;
+  --serif: Georgia, "Times New Roman", serif; --sans: Georgia, "Times New Roman", serif;
+  --mono: Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #14120F; --paper-raised: #1C1915; --ink: #F3EFE7; --muted: #A79C82;
+    --accent: #C9A46C; --accent-ink: #D9BB8C; --line: #332B22; --gold: #C9A46C; }
+}
+:root[data-theme="dark"] { --paper: #14120F; --paper-raised: #1C1915; --ink: #F3EFE7; --muted: #A79C82;
+  --accent: #C9A46C; --accent-ink: #D9BB8C; --line: #332B22; --gold: #C9A46C; }
+:root[data-theme="light"] { --paper: #F3EFE7; --paper-raised: #FAF8F3; --ink: #1A1A1A; --muted: #6B6357;
+  --accent: #9C7A4F; --accent-ink: #7A5F3D; --line: #DCD5C7; --gold: #9C7A4F; }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent-ink); }
+::selection { background: var(--gold); color: var(--paper); }
+
+.meter-row { display: flex; gap: 18px; font-family: var(--sans); font-size: 11px; letter-spacing: .1em;
+  color: var(--muted); text-transform: uppercase; font-variant-numeric: tabular-nums; flex-wrap: wrap; }
+.meter-row span::before { content: "· "; opacity: .5; }
+.meter-row span:first-child::before { content: ""; }
+
+.corner-frame { position: relative; border: 1px solid var(--line); }
+.corner-frame::before, .corner-frame::after,
+.corner-frame .c2::before, .corner-frame .c2::after {
+  content: ""; position: absolute; width: 18px; height: 18px; border: 1px solid var(--gold); }
+.corner-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.corner-frame::after { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+.corner-frame .c2::before { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+.corner-frame .c2::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.leader-rule { height: 10px; margin: 0; background: repeating-linear-gradient(90deg, var(--line) 0 1.5px, transparent 1.5px 14px); }
+
+/* ---- EBOOK PAGE ---- */
+.sheet { background: var(--paper-raised); max-width: 720px; margin: 0 auto 28px; padding: 76px 72px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 24px 48px -24px rgba(0,0,0,.2); }
+.cover-sheet { text-align: center; padding: 120px 72px; }
+.cover-sheet .kicker { font-family: var(--sans); font-size: 12px; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 34px; }
+.cover-sheet h1 { font-family: var(--serif); font-weight: 400; font-size: 50px; line-height: 1.08;
+  letter-spacing: -0.005em; margin: 0 0 26px; text-wrap: balance; }
+.cover-sheet h1 em { font-style: italic; font-weight: 400; color: var(--accent-ink); }
+.cover-sheet .sub { font-size: 16.5px; color: var(--muted); max-width: 40ch; margin: 0 auto 50px; font-style: italic; }
+.cover-sheet .byline { font-family: var(--sans); font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); }
+
+.toc-page ol { list-style: none; padding: 0; margin: 0; font-family: var(--serif); font-size: 15px; }
+.toc-page li { display: flex; gap: 18px; padding: 13px 0; border-bottom: 1px dotted var(--line); }
+.toc-page .tc-sm { color: var(--gold); font-style: italic; }
+.toc-page .n { margin-left: auto; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.chapter-slate { display: flex; align-items: flex-end; gap: 24px; margin-bottom: 40px; border-bottom: 1px solid var(--gold); padding-bottom: 20px; }
+.tc { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 40px; color: var(--gold); line-height: 1; }
+.chapter-head h2 { font-family: var(--serif); font-weight: 400; font-size: 29px;
+  margin: 0 0 6px; letter-spacing: -0.005em; text-wrap: balance; }
+.chapter-head .slug { font-family: var(--sans); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+
+.sheet p.lead { font-size: 18.5px; font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--ink); line-height: 1.55; }
+.sheet p { font-size: 15.5px; line-height: 1.8; color: var(--ink); max-width: 62ch; }
+.sheet p.body-muted { color: var(--muted); }
+.sheet h3 { font-family: var(--serif); font-weight: 700; font-size: 15px; letter-spacing: .01em; margin: 32px 0 12px; color: var(--ink); }
+
+.pull { margin: 34px 0; padding: 4px 0 4px 26px; border-left: 1px solid var(--gold); }
+.pull p { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 22px; color: var(--accent-ink);
+  line-height: 1.4; margin: 0; text-wrap: balance; }
+
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line);
+  border: 1px solid var(--line); margin: 24px 0; }
+.stat-cell { background: var(--paper); padding: 18px 16px; }
+.stat-cell .v { font-family: var(--serif); font-size: 28px; font-weight: 400; font-style: italic; color: var(--accent-ink); line-height: 1; }
+.stat-cell .l { font-family: var(--sans); font-size: 10px; letter-spacing: .06em; color: var(--muted); margin-top: 8px; display: block; }
+
+.checklist { list-style: none; padding: 0; margin: 22px 0; }
+.checklist li { display: flex; gap: 12px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+.checklist li::before { content: "—"; color: var(--gold); }
+
+.prompt-cards { display: grid; gap: 8px; margin: 20px 0; }
+.prompt-card { background: var(--paper); border: 1px solid var(--line); padding: 13px 16px 13px 46px;
+  position: relative; font-family: var(--serif); font-style: italic; font-size: 14px; line-height: 1.6; color: var(--ink); }
+.prompt-card .idx { position: absolute; left: 14px; top: 13px; font-weight: 700; font-style: normal; color: var(--accent-ink); font-size: 11px; }
+
+.photo-slot { background: repeating-linear-gradient(45deg, var(--line) 0 1px, transparent 1px 12px);
+  border: 1px dashed var(--line); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+  font-family: var(--sans); font-size: 11px; color: var(--muted); text-align: center; padding: 20px; margin: 20px 0; }
+
+.photo-real { width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--line); margin: 20px 0 6px; display: block; }
+.photo-caption { font-family: var(--sans); font-size: 10.5px; font-style: italic; color: var(--muted); margin: 0 0 20px; }
+
+.photo-phone { display: block; max-width: 300px; width: 100%; margin: 20px auto 6px; border: 1px solid var(--line); }
+.photo-phone-row { display: flex; gap: 16px; margin: 20px 0 6px; }
+.photo-phone-row .photo-phone { margin: 0; flex: 1; }
+.photo-wide { width: 100%; border: 1px solid var(--line); margin: 20px 0 6px; display: block; }
+
+.course-hook { background: var(--paper); border: 1px solid var(--gold); padding: 22px 26px; margin: 30px 0; }
+.course-hook .tag { font-family: var(--sans); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.course-hook p { margin: 8px 0 0; font-size: 14px; }
+
+.sheet-footer { display: flex; justify-content: space-between; font-family: var(--sans); font-size: 10.5px;
+  letter-spacing: .1em; color: var(--muted); text-transform: uppercase; margin-top: 52px; padding-top: 14px; border-top: 1px solid var(--line); }
+
+/* ---- LANDING ---- */
+.land-nav { display: flex; align-items: center; justify-content: space-between; padding: 26px 56px; }
+.land-nav .id { font-family: var(--sans); font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; }
+.land-nav .cta-mini { font-family: var(--sans); font-size: 11.5px; text-transform: uppercase; letter-spacing: .15em;
+  color: var(--ink); border: 1px solid var(--line); padding: 9px 16px; text-decoration: none; }
+
+.hero { padding: 20px 56px 80px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 60px; align-items: center; }
+.hero .kicker { font-family: var(--sans); font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+.hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(38px, 4.6vw, 60px); line-height: 1.08;
+  letter-spacing: -0.005em; margin: 0 0 26px; text-wrap: balance; }
+.hero h1 em { color: var(--accent-ink); font-style: italic; font-weight: 400; }
+.hero .sub { font-size: 18px; color: var(--muted); max-width: 46ch; margin: 0 0 36px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--paper);
+  text-decoration: none; font-family: var(--sans); font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; padding: 17px 30px; border: none; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+
+/* ---- PLAQUE (hero visual — HustleStack minimalist identity) ---- */
+.plaque { aspect-ratio: 4/5; position: relative; background: var(--paper-raised);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; }
+.plaque img { width: 46%; height: auto; }
+.plaque .rule { width: 64px; height: 1px; background: var(--gold); }
+.plaque .cap { font-family: var(--sans); font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+
+.section-editorial { padding: 78px 56px; border-top: 1px solid var(--line); }
+.section-inner { max-width: 980px; margin: 0 auto; }
+.section-editorial .eyebrow { font-family: var(--sans); font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.section-editorial h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(26px,3vw,38px); margin: 0 0 44px; letter-spacing: -0.005em; text-wrap: balance; max-width: 22ch; }
+
+.toc-editorial { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+.toc-editorial li { display: grid; grid-template-columns: 60px 1fr; gap: 22px; padding: 22px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.toc-editorial .tc-sm { font-family: var(--serif); font-style: italic; color: var(--gold); font-size: 16px; }
+.toc-editorial .t { font-family: var(--serif); font-size: 18px; font-weight: 400; }
+.toc-editorial .d { color: var(--muted); font-size: 13.5px; margin-top: 4px; max-width: 52ch; font-style: italic; }
+
+.price-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.price-cell { background: var(--paper); padding: 40px 36px; }
+.price-cell.on { background: var(--paper-raised); }
+.price-cell .pn { font-family: var(--sans); font-size: 11px; text-transform: uppercase; letter-spacing: .18em; color: var(--muted); }
+.price-cell .pv { font-family: var(--serif); font-size: 42px; font-weight: 400; margin: 10px 0; font-style: italic; }
+.price-cell .pv small { font-family: var(--sans); font-size: 13px; font-style: normal; color: var(--muted); }
+.price-cell p.pd { color: var(--muted); font-size: 14px; margin: 0 0 22px; font-style: italic; }
+
+@media (max-width: 880px) {
+  .sheet { padding: 48px 30px; }
+  .hero { grid-template-columns: 1fr; padding: 20px 24px 56px; }
+  .section-editorial { padding: 56px 24px; }
+  .price-row, .stat-row { grid-template-columns: 1fr; }
+}
+
+@media print {
+  body { background: var(--paper-raised); }
+  .sheet { box-shadow: none; margin: 0; max-width: none; padding: 0.6in 0.75in; page-break-after: always; }
+  .sheet:last-of-type { page-break-after: auto; }
+  @page { size: A4; margin: 0; }
+}
+</style>
+
+</head>
+<body>
+<title>The AI Avatar Playbook — HustleStack</title>
+
+<style>
+[data-lang] > .es { display: none; }
+[data-lang="es"] > .en { display: none; }
+[data-lang="es"] > .es { display: block; }
+.lang-switch { display: inline-flex; border: 1px solid var(--line); }
+.lang-switch button { background: transparent; border: none; cursor: pointer; font-family: var(--sans);
+  font-size: 11.5px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted);
+  padding: 9px 16px; }
+.lang-switch button.on { background: var(--ink); color: var(--paper); }
+.avatar-slot { aspect-ratio: 4/5; position: relative; background: var(--paper-raised);
+  border: 1px dashed var(--line); display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 18px; text-align: center; padding: 30px; }
+.avatar-slot .mark { font-family: var(--serif); font-style: italic; font-size: 44px; color: var(--gold); }
+.avatar-slot .rule { width: 64px; height: 1px; background: var(--gold); }
+.avatar-slot .cap { font-family: var(--sans); font-size: 11px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--muted); max-width: 24ch; line-height: 1.8; }
+</style>
+
+<nav class="land-nav">
+  <span class="id">HUSTLESTACK</span>
+  <span style="display:flex;align-items:center;gap:14px;">
+    <span class="lang-switch">
+      <button id="btn-en" class="on" onclick="setLang('en')">English</button>
+      <button id="btn-es" onclick="setLang('es')">Español</button>
+    </span>
+    <a class="cta-mini" href="#pricing"><span class="i18n" data-en="Buy" data-es="Comprar">Buy</span></a>
+  </span>
+</nav>
+
+<header class="hero">
+  <div id="hero-copy" data-lang="en">
+    <div class="en">
+      <div class="kicker">HustleStack Collection</div>
+      <h1>An AI avatar<br />that <em>sells.</em><br />Without you on camera.</h1>
+      <p class="sub">Build a realistic avatar with Higgsfield, post every day, and earn commission
+      selling other people's products through TikTok Shop Affiliate — no filming, no team, no
+      inventory.</p>
+      <a class="btn" href="#pricing">Get the guide now</a>
+      <div class="meter-row" style="margin-top:22px;">
+        <span>Instant PDF</span><span>31 pages</span><span>Both languages included</span>
+      </div>
+    </div>
+    <div class="es">
+      <div class="kicker">HustleStack Collection</div>
+      <h1>Un avatar de IA<br />que <em>vende.</em><br />Sin aparecer en cámara.</h1>
+      <p class="sub">Crea un avatar realista con Higgsfield, publica todos los días y gana comisión
+      vendiendo productos de terceros con TikTok Shop Afiliados — sin grabar, sin equipo, sin
+      inventario.</p>
+      <a class="btn" href="#pricing">Quiero la guía ahora</a>
+      <div class="meter-row" style="margin-top:22px;">
+        <span>PDF al instante</span><span>31 páginas</span><span>Los dos idiomas incluidos</span>
+      </div>
+    </div>
+  </div>
+  <div class="avatar-slot corner-frame">
+    <div class="c2"></div>
+    <div class="mark">HS</div>
+    <div class="rule"></div>
+    <div class="cap">Avatar placeholder</div>
+  </div>
+</header>
+
+<section class="section-editorial">
+  <div class="section-inner" data-lang="en">
+    <div class="en">
+      <div class="eyebrow">The market that just opened</div>
+      <h2>It's not about showing up more. It's about an avatar that works 24/7.</h2>
+      <div class="stat-row">
+        <div class="stat-cell"><span class="v">$15.9B</span><span class="l">global virtual influencer market in 2026</span></div>
+        <div class="stat-cell"><span class="v">1,000</span><span class="l">followers minimum to join TikTok Shop Affiliate</span></div>
+        <div class="stat-cell"><span class="v">19</span><span class="l">live TikTok Shop markets, including the US, UK, Spain and Mexico</span></div>
+      </div>
+    </div>
+    <div class="es">
+      <div class="eyebrow">El mercado que se acaba de abrir</div>
+      <h2>No se trata de aparecer más. Se trata de un avatar que trabaja 24/7.</h2>
+      <div class="stat-row">
+        <div class="stat-cell"><span class="v">15.900M$</span><span class="l">mercado global de influencers virtuales en 2026</span></div>
+        <div class="stat-cell"><span class="v">1.000</span><span class="l">seguidores mínimos para entrar en TikTok Shop Afiliados</span></div>
+        <div class="stat-cell"><span class="v">19</span><span class="l">mercados con TikTok Shop activo, incluyendo España, México, EE.UU. y Reino Unido</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-editorial" style="background:var(--paper-raised);">
+  <div class="section-inner" data-lang="en">
+    <div class="en">
+      <div class="eyebrow">What's inside</div>
+      <h2>From avatar to first commission.</h2>
+      <ul class="toc-editorial">
+        <li><span class="tc-sm">3</span><div><div class="t">Creating a realistic avatar with Soul ID</div>
+        <div class="d">A fixed identity, consistent in every video, without the "talking doll" look.</div></div></li>
+        <li><span class="tc-sm">5</span><div><div class="t">Writing a selling script that converts</div>
+        <div class="d">Hook, proof and call to action — the template that sells like a recommendation, not an ad.</div></div></li>
+        <li><span class="tc-sm">7</span><div><div class="t">TikTok Shop Affiliate in practice</div>
+        <div class="d">Signup, open categories, and how to pick a product with real commission.</div></div></li>
+        <li><span class="tc-sm">9</span><div><div class="t">One avatar, two channels</div>
+        <div class="d">The same avatar earning on Instagram too, with zero duplicated work.</div></div></li>
+      </ul>
+    </div>
+    <div class="es">
+      <div class="eyebrow">Qué incluye</div>
+      <h2>Del avatar a la primera comisión.</h2>
+      <ul class="toc-editorial">
+        <li><span class="tc-sm">3</span><div><div class="t">Creando un avatar realista con Soul ID</div>
+        <div class="d">Una identidad fija, consistente en cada video, sin el efecto "muñeco hablando".</div></div></li>
+        <li><span class="tc-sm">5</span><div><div class="t">Escribiendo un guion de venta que convierte</div>
+        <div class="d">Gancho, prueba y llamada a la acción — la plantilla que vende como una recomendación, no como un anuncio.</div></div></li>
+        <li><span class="tc-sm">7</span><div><div class="t">TikTok Shop Afiliados en la práctica</div>
+        <div class="d">Registro, categorías abiertas y cómo elegir un producto con comisión real.</div></div></li>
+        <li><span class="tc-sm">9</span><div><div class="t">Un avatar, dos canales</div>
+        <div class="d">El mismo avatar ganando también en Instagram, sin trabajo duplicado.</div></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section-editorial" id="pricing">
+  <div class="section-inner" data-lang="en">
+    <div class="en">
+      <div class="eyebrow">Pricing</div>
+      <h2>One purchase. Both languages.</h2>
+      <div class="price-row" style="grid-template-columns:1fr;max-width:440px;margin:0 auto;">
+        <div class="price-cell on">
+          <div class="pn">The AI Avatar Playbook</div>
+          <div class="pv">€12<small>&nbsp;one-time</small></div>
+          <p class="pd">31 pages. You get the English and Spanish PDF together, no need to choose.</p>
+          <a class="btn" href="#" target="_blank" rel="noopener">Get the guide</a>
+        </div>
+      </div>
+      <p class="body-muted" style="text-align:center;font-size:13px;margin-top:20px;">Secure checkout. Both PDFs delivered to your email right after purchase confirmation.</p>
+    </div>
+    <div class="es">
+      <div class="eyebrow">Precio</div>
+      <h2>Una compra. Los dos idiomas.</h2>
+      <div class="price-row" style="grid-template-columns:1fr;max-width:440px;margin:0 auto;">
+        <div class="price-cell on">
+          <div class="pn">El Manual del Avatar de IA</div>
+          <div class="pv">12€<small>&nbsp;pago único</small></div>
+          <p class="pd">31 páginas. Recibes el PDF en español y en inglés juntos, sin tener que elegir.</p>
+          <a class="btn" href="#" target="_blank" rel="noopener">Quiero la guía</a>
+        </div>
+      </div>
+      <p class="body-muted" style="text-align:center;font-size:13px;margin-top:20px;">Pago seguro. Los dos PDF se entregan por correo justo después de confirmar la compra.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('[data-lang]').forEach(function (el) { el.setAttribute('data-lang', lang); });
+  document.querySelectorAll('.i18n').forEach(function (el) { el.textContent = el.getAttribute('data-' + lang); });
+  document.getElementById('btn-en').classList.toggle('on', lang === 'en');
+  document.getElementById('btn-es').classList.toggle('on', lang === 'es');
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('hs-lang', lang); } catch (e) {}
+}
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem('hs-lang'); } catch (e) {}
+  var initial = saved || ((navigator.language || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en');
+  setLang(initial);
+})();
+</script>
+
+</body>
+</html>
