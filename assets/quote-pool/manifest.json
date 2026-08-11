@@ -1,0 +1,20 @@
+{
+  "comment": "Pool fixo de 14 quote mini-carrosseis do @hustlestackhq, gerado uma vez em 2026-08-11 a partir de QUOTE_POSTS em .claude/skills/creatorup-gerar-carrossel-en/generate_template.py (repo creatorup-carrosseis-automation). Conteudo evergreen, aprovado, NAO muda dia a dia -- diferente do estoque do letreiro (Creator Up 18h), este pool nao precisa de reabastecimento nem de used.json: os triggers de nuvem das 10h/19h ET ciclam por indice de dia-do-ano (dia % 7 pra manha, +7 pra noite), cobrindo os 14 itens por semana. So regenerar se a lista QUOTE_POSTS mudar de verdade.",
+  "generated_at": "2026-08-11",
+  "items": [
+    "consistency-not-motivation",
+    "small-wins-compound",
+    "comparison-trap",
+    "fear-of-starting",
+    "overnight-success-myth",
+    "boring-work",
+    "following-through",
+    "one-skill-mastered",
+    "time-vs-money",
+    "progress-over-perfection",
+    "saying-no-to-distractions",
+    "long-game-mindset",
+    "showing-up-on-bad-days",
+    "algorithm-rewards-consistency"
+  ]
+}
