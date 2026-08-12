@@ -1,0 +1,13 @@
+{
+  "comment": "Pool fixo de 7 carrosseis de 'tatica gratis' do @hustlestackhq, gerado uma vez em 2026-08-11 a partir de TACTIC_POSTS em .claude/skills/creatorup-gerar-carrossel-en/generate_template.py (repo creatorup-carrosseis-automation). Substitui a rotacao de quote da manha (10h ET) no mix revisado de 2026-08-11 -- cada post ensina uma tatica completa e aplicavel (growth de IG/TikTok, side hustle com IA, renda passiva), sem cortar no meio pra vender, fecha com pedido de follow + mencao leve de 'guides in bio'. Conteudo evergreen, aprovado, NAO muda dia a dia -- o trigger das 10h ET cicla por indice de dia-do-ano (dia % 7), cobrindo os 7 itens por semana, sem depender de git push diario. So regenerar se a lista TACTIC_POSTS mudar de verdade.",
+  "generated_at": "2026-08-11",
+  "items": [
+    "hook-in-three-seconds",
+    "reverse-engineer-a-viral-post",
+    "first-ai-client-in-a-week",
+    "price-ai-work-right",
+    "one-digital-product-stack",
+    "turn-a-skill-into-a-template",
+    "posting-schedule-that-works"
+  ]
+}

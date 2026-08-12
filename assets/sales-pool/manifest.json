@@ -1,0 +1,9 @@
+{
+  "comment": "Pool fixo dos 3 carrosseis de venda (ebooks) do @hustlestackhq, gerado uma vez em 2026-08-11 a partir de EBOOKS em .claude/skills/creatorup-gerar-carrossel-en/generate_template.py (repo creatorup-carrosseis-automation). Reativa o slot de venda direta (extinto em 2026-08-10 quando o 14h ET virou case study) no mix revisado de 2026-08-11 -- agora no slot das 19h ET, rotacionando os 3 ebooks (grow-instagram-tiktok, ai-side-hustles, passive-income-online), fecha com 'link in bio'. Conteudo evergreen, aprovado, NAO muda dia a dia -- o trigger das 19h ET cicla por indice de dia-do-ano (dia % 3), sem depender de git push diario. So regenerar se o texto de algum ebook mudar de verdade.",
+  "generated_at": "2026-08-11",
+  "items": [
+    "grow-instagram-tiktok",
+    "ai-side-hustles",
+    "passive-income-online"
+  ]
+}
