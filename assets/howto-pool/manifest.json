@@ -1,0 +1,14 @@
+{
+  "comment": "Weekly stock for the new 'main course' format (10am Brasilia, every day Mon-Sat), selling ai-avatar-tiktok-shop. Refilled weekly by the local routine creatorup-howto-pool-refill. The 10am cloud trigger only READS this stock by weekday index (Mon=0 ... Sat=5, no Sunday post), never generates or pushes.",
+  "generated_at": "2026-08-12",
+  "week_of": "2026-08-12",
+  "slides_per_item": 5,
+  "items": [
+    "01-mon-new-script",
+    "02-tue-real-research",
+    "03-wed-fixes-itself",
+    "04-thu-posts-itself",
+    "05-fri-multi-format",
+    "06-sat-consistency"
+  ]
+}
