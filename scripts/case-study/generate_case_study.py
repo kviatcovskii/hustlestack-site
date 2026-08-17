@@ -37,26 +37,41 @@ os.makedirs(OUT_DIR, exist_ok=True)
 
 _PHOTO_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out", "case-study-photos")
 
-# PLACEHOLDER — the 14h ET daily routine edits this dict with today's real, researched case before
-# running the script. Left here as a structural example only; do not publish this content as-is.
+# Case: Dollar Shave Club's $4,500 launch video (2012) to $1B Unilever exit (2016).
+# Researched 2026-08-17. Not previously covered (only Nike/Kaepernick on 2026-08-12).
 CASE = {
-    "date": "2026-08-10",
-    "cover_photo_path": os.path.join(_PHOTO_DIR, "cover.jpg"),
+    "date": "2026-08-17",
+    "cover_photo_path": os.path.join(_PHOTO_DIR, "candidates", "cartridge.jpg"),
     "cover_headline": [
-        ("REPLACE WITH TODAY'S", False),
-        ("REAL CASE HEADLINE", True),
+        ("A $4,500 VIDEO", False),
+        ("BECAME A $1B EXIT", True),
     ],
     "story_slides": [
         {
-            "text": "Replace with real, researched story text for slide 1.",
-            "highlight": ["researched"],
-            "photo": os.path.join(_PHOTO_DIR, "story1.jpg"),
+            "text": "In 2012, Dollar Shave Club had no ad budget worth mentioning.\n\nFounder Michael Dubin wrote the launch video script himself and shot it in a single day with a friend from his improv days. Total cost: $4,500.",
+            "highlight": ["$4,500"],
+            "photo": os.path.join(_PHOTO_DIR, "candidates", "camera.jpg"),
+        },
+        {
+            "text": "No big crew, no polish. Just Dubin talking straight into the camera, deadpan, selling a subscription razor like it was the funniest pitch he'd ever made.\n\nThe day it went live, the site crashed from the traffic.",
+            "highlight": ["crashed"],
+            "photo": os.path.join(_PHOTO_DIR, "candidates", "desk.jpg"),
+        },
+        {
+            "text": "Within 48 hours: about 12,000 orders.\n\nWithin 3 months on YouTube: 4.75 million views.\n\nA company nobody had heard of a week earlier was suddenly the one Gillette had to worry about.",
+            "highlight": ["12,000 orders", "4.75 million views"],
+            "photo": os.path.join(_PHOTO_DIR, "candidates", "riches.jpg"),
+        },
+        {
+            "text": "Four years later, in 2016, Unilever bought Dollar Shave Club for a reported $1 billion in cash.\n\nDubin stayed on as CEO. One of the largest e-commerce acquisitions of its time.",
+            "highlight": ["$1 billion"],
+            "photo": os.path.join(_PHOTO_DIR, "candidates", "handshake.jpg"),
         },
     ],
     "lesson_slide": {
-        "text": "The marketing lesson here is:\n\nReplace with the real marketing-specific lesson pulled from today's case.",
-        "highlight": ["lesson"],
-        "photo": os.path.join(_PHOTO_DIR, "lesson.jpg"),
+        "text": "The marketing lesson here is:\n\nThe product was ordinary, a razor blade delivered monthly. What wasn't ordinary was the pitch. One person, one camera, one honest voice beat every big-budget razor ad on the market.",
+        "highlight": ["one honest voice"],
+        "photo": os.path.join(_PHOTO_DIR, "candidates", "cartridge.jpg"),
     },
     "outro_lines": ["A DIFFERENT MARKETING", "STRATEGY EVERY DAY."],
 }
