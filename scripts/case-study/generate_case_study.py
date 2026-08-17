@@ -58,8 +58,13 @@ CASE = {
             "photo": os.path.join(_PHOTO_DIR, "candidates", "desk.jpg"),
         },
         {
-            "text": "Within 48 hours: about 12,000 orders.\n\nWithin 3 months on YouTube: 4.75 million views.\n\nA company nobody had heard of a week earlier was suddenly the one Gillette had to worry about.",
-            "highlight": ["12,000 orders", "4.75 million views"],
+            "text": "People weren't just watching, they were sending it to everyone they knew.\n\nIn its first 3 months on YouTube, the video passed 4.75 million views, for a company almost nobody had heard of a week earlier.",
+            "highlight": ["4.75 million views"],
+            "photo": os.path.join(_PHOTO_DIR, "candidates", "laptop_entrepreneur.jpg"),
+        },
+        {
+            "text": "The views turned into signups fast.\n\nWithin 48 hours of the video going live: about 12,000 orders. Gillette suddenly had a company to worry about that hadn't existed in most people's minds a week earlier.",
+            "highlight": ["12,000 orders"],
             "photo": os.path.join(_PHOTO_DIR, "candidates", "riches.jpg"),
         },
         {
@@ -71,7 +76,7 @@ CASE = {
     "lesson_slide": {
         "text": "The marketing lesson here is:\n\nThe product was ordinary, a razor blade delivered monthly. What wasn't ordinary was the pitch. One person, one camera, one honest voice beat every big-budget razor ad on the market.",
         "highlight": ["one honest voice"],
-        "photo": os.path.join(_PHOTO_DIR, "candidates", "cartridge.jpg"),
+        "photo": os.path.join(_PHOTO_DIR, "candidates", "mic_vintage.jpg"),
     },
     "outro_lines": ["A DIFFERENT MARKETING", "STRATEGY EVERY DAY."],
 }
