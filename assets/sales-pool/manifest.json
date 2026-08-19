@@ -1,10 +1,7 @@
 {
-  "comment": "Pool fixo dos 4 carrosseis de venda (ebooks) do @hustlestackhq, gerado uma vez em 2026-08-11 a partir de EBOOKS em .claude/skills/creatorup-gerar-carrossel-en/generate_template.py (repo creatorup-carrosseis-automation). Reativa o slot de venda direta (extinto em 2026-08-10 quando o 14h ET virou case study) no mix revisado de 2026-08-11 -- agora no slot das 19h ET, rotacionando os 4 ebooks (grow-instagram-tiktok, ai-side-hustles, passive-income-online, ai-avatar-tiktok-shop -- o 4o adicionado no mesmo dia, apos confirmar que ja tem link de checkout real via Kiwify), fecha com 'link in bio'. Conteudo evergreen, aprovado, NAO muda dia a dia -- o trigger das 19h ET cicla por indice de dia-do-ano (dia % 4), sem depender de git push diario. So regenerar se o texto de algum ebook mudar de verdade.",
-  "generated_at": "2026-08-11",
+  "comment": "ATUALIZADO 2026-08-19: reduzido pro unico item ativo. Os 3 ebooks antigos (grow-instagram-tiktok, ai-side-hustles, passive-income-online) foram descontinuados no pivo mono-produto de 2026-08-17 e a pasta antiga 'ai-avatar-tiktok-shop' (visual ivory/gold, gerado 2026-08-11) foi substituida por 'sell-without-your-face', novo formato visual dark/code (fundo quase preto, headline bold grotesk, kicker em pill, cards com borda) pedido pelo usuario depois de mandar referencia de um carrossel de terceiro (@claudeskill_) -- pastas antigas mantidas no repo (nada apagado), so nao referenciadas mais aqui. Como so tem 1 item, o trigger das 19h ET nao precisa mais de logica de rotacao por dia -- so publica esse sempre. Gerado por creatorup-gerar-carrossel-en/generate_sales_dark.py no repo creatorup-carrosseis-automation.",
+  "generated_at": "2026-08-19",
   "items": [
-    "grow-instagram-tiktok",
-    "ai-side-hustles",
-    "passive-income-online",
-    "ai-avatar-tiktok-shop"
+    "sell-without-your-face"
   ]
 }
