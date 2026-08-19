@@ -1,14 +1,14 @@
 {
-  "comment": "Weekly stock for the 'main course' format (10am Brasilia, every day Mon-Sat), selling ai-avatar-tiktok-shop — the brand's only product since 2026-08-17. Redesigned the same day: editorial visual system (gold/cream tokens, real avatar photos) replacing the old dark chat/scheduler mockups, content alternating Claude-connector spotlights and make-money-with-Claude tips. Refilled weekly by the local routine creatorup-howto-pool-refill. The 10am cloud trigger only READS this stock by weekday index (Mon=0 ... Sat=5, no Sunday post), never generates or pushes.",
-  "generated_at": "2026-08-17",
-  "week_of": "2026-08-17",
+  "comment": "Weekly stock for the 'main course' format (10am Brasilia, every day Mon-Sat), selling ai-avatar-tiktok-shop — the brand's only product since 2026-08-17. Redesigned the same day: editorial visual system (gold/cream tokens, real avatar photos) replacing the old dark chat/scheduler mockups, content alternating Claude-connector spotlights and make-money-with-Claude tips. This refill reused the only real screenshot available (assets/screenshots/conectores-overview.png, still the only file that ever landed in screenshots-inbox for this brand) but with an entirely new hook/angle for Monday vs last week; Wednesday and Friday connector days use step cards (no per-connector real screenshot exists yet for TikTok Shop Affiliate or Instagram specifically). Refilled weekly by the local routine creatorup-howto-pool-refill. The 10am cloud trigger only READS this stock by weekday index (Mon=0 ... Sat=5, no Sunday post), never generates or pushes.",
+  "generated_at": "2026-08-19",
+  "week_of": "2026-08-19",
   "slides_per_item": 5,
   "items": [
-    "01-monday-connector-higgsfield",
-    "02-tuesday-money-sell-without-your-face",
-    "03-wednesday-connector-tiktok-shop",
-    "04-thursday-money-cost-and-roi",
-    "05-friday-connector-instagram",
-    "06-saturday-money-consistency"
+    "01-monday-connector-higgsfield-remembers-the-face",
+    "02-tuesday-money-tracks-what-converts",
+    "03-wednesday-connector-commission-before-you-pick",
+    "04-thursday-money-never-fakes-a-review",
+    "05-friday-connector-tone-per-platform",
+    "06-saturday-money-never-an-empty-week"
   ]
 }
