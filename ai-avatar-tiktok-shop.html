@@ -107,6 +107,9 @@
     background: radial-gradient(circle, rgba(226,143,107,.4) 0%, transparent 70%); animation-delay: -2.2s; }
   @keyframes glowBreathe { 0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: .85; } 50% { transform: translate(-50%,-50%) scale(1.2); opacity: 1; } }
   .scene-ripple { position: absolute; z-index: 0; pointer-events: none; top: 64%; left: 68%; }
+  .hd-badge { position: absolute; width: 130px; height: 130px; right: -26px; bottom: -18px; z-index: 4; pointer-events: none; }
+  .hd-badge canvas { width: 100%; height: 100%; display: block; }
+  @media (max-width: 860px) { .hd-badge { width: 96px; height: 96px; right: -14px; bottom: -10px; } }
   .ripples span { position: absolute; top: 0; left: 0; width: 90px; height: 26px; margin: -13px 0 0 -45px;
     border-radius: 50%; border: 1px solid var(--accent); opacity: 0; animation: ringPing 3.4s cubic-bezier(.15,.6,.3,1) infinite; }
   .ripples span:nth-child(2) { animation-delay: .9s; }
@@ -233,6 +236,7 @@
     <div class="corner tl"></div>
     <div class="corner br"></div>
     <img src="assets/landing/avatar-hero-sells.jpg" alt="Content creator filming with the AI avatar identity this guide teaches you to build, ring light and desk setup" />
+    <div class="hd-badge"><canvas id="badgeCanvas"></canvas></div>
   </div>
 </header>
 
@@ -443,6 +447,75 @@ function setLang(lang) {
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+</script>
+
+<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+<script>
+(function () {
+  if (!window.THREE) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  var wrap = document.querySelector('.hd-badge');
+  var canvas = document.getElementById('badgeCanvas');
+  if (!wrap || !canvas) return;
+
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 20);
+  camera.position.set(0, 0, 3.2);
+
+  var glyphColor = new THREE.Color(0xE28F6B);
+  var glyphCanvas = document.createElement('canvas');
+  glyphCanvas.width = 200; glyphCanvas.height = 200;
+  var gctx = glyphCanvas.getContext('2d');
+  gctx.fillStyle = '#fff';
+  gctx.font = '900 150px Arial';
+  gctx.textAlign = 'center';
+  gctx.textBaseline = 'middle';
+  gctx.fillText('$', 100, 106);
+  var gdata = gctx.getImageData(0, 0, 200, 200).data;
+  var STEP = 2, SCALE = 1.9;
+  var positions = [], basePositions = [];
+  for (var py = 0; py < 200; py += STEP) {
+    for (var px = 0; px < 200; px += STEP) {
+      var alpha = gdata[(py * 200 + px) * 4 + 3];
+      if (alpha < 140) continue;
+      var x = (px - 100) / 200 * SCALE;
+      var y = -(py - 100) / 200 * SCALE;
+      var z = (Math.random() - 0.5) * 0.1;
+      positions.push(x, y, z);
+      basePositions.push(x, y, z);
+    }
+  }
+  var posArr = new Float32Array(positions);
+  var baseArr = new Float32Array(basePositions);
+  var geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(posArr, 3));
+  var mat = new THREE.PointsMaterial({ size: 0.05, color: glyphColor, transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending, depthWrite: false });
+  var points = new THREE.Points(geo, mat);
+  scene.add(points);
+
+  function resize() {
+    var w = wrap.clientWidth, h = wrap.clientHeight;
+    if (!w || !h) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  var clock = new THREE.Clock();
+  function animate() {
+    requestAnimationFrame(animate);
+    var t = clock.getElapsedTime();
+    points.rotation.y = Math.sin(t * 0.4) * 0.4;
+    points.position.y = Math.sin(t * 0.8) * 0.08;
+    renderer.render(scene, camera);
+  }
+  animate();
 })();
 </script>
 </body>
