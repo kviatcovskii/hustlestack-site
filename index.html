@@ -120,6 +120,14 @@
     .hero-frame, .hero-frame img, .glow, .ripples span { animation: none !important; opacity: 1 !important; transform: none !important; }
   }
 
+  /* ---- scroll-driven word-by-word reveal statement ---- */
+  .reveal-section { padding: 72px 24px; text-align: center; }
+  .reveal-text { font-family: var(--display); font-weight: 400; font-size: clamp(20px, 2.6vw, 28px); line-height: 1.5;
+    max-width: 44ch; margin: 0 auto; }
+  .reveal-text .rv-word { display: inline-block; color: var(--line); transition: color .4s ease; }
+  .reveal-text .rv-word.lit { color: var(--ink); }
+  @media (prefers-reduced-motion: reduce) { .reveal-text .rv-word { color: var(--ink) !important; } }
+
   /* ---- trust strip (below hero, not inside it) ---- */
   .trust-strip {
     border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
@@ -244,6 +252,11 @@
   <span class="en"><span>Instant PDF</span><span>38 pages</span><span>Both languages included</span></span>
   <span class="es"><span>PDF al instante</span><span>38 páginas</span><span>Los dos idiomas incluidos</span></span>
 </div>
+
+<section class="reveal-section" data-lang="en">
+  <p class="reveal-text en" data-reveal>Every technique in this guide comes from the exact avatar workflow tested on this account, not repackaged AI hype.</p>
+  <p class="reveal-text es" data-reveal>Cada técnica de esta guía viene del mismo flujo de avatar probado en esta cuenta, no es contenido reciclado de IA.</p>
+</section>
 
 <section data-lang="en">
   <div class="section-inner">
@@ -516,6 +529,48 @@ function setLang(lang) {
     renderer.render(scene, camera);
   }
   animate();
+})();
+</script>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!els.length) return;
+  var groups = [];
+  els.forEach(function (el) {
+    var text = el.textContent;
+    el.innerHTML = '';
+    var segments = text.split(/(\s+)/);
+    for (var i = 0; i < segments.length; i++) {
+      var seg = segments[i];
+      if (seg === '') continue;
+      if (/^\s+$/.test(seg)) { el.appendChild(document.createTextNode(seg)); continue; }
+      var span = document.createElement('span');
+      span.className = 'rv-word';
+      span.textContent = seg;
+      el.appendChild(span);
+    }
+    var words = el.querySelectorAll('.rv-word');
+    if (reduce) { words.forEach(function (w) { w.classList.add('lit'); }); }
+    else { groups.push({ el: el, words: words }); }
+  });
+  if (reduce || !groups.length) return;
+  function frame() {
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    groups.forEach(function (g) {
+      var rect = g.el.getBoundingClientRect();
+      if (!rect.height) return;
+      var p = (vh * 0.85 - rect.top) / (rect.height * 0.9 + 1);
+      p = Math.max(0, Math.min(1, p));
+      var litCount = Math.round(p * g.words.length);
+      g.words.forEach(function (w, idx) {
+        if (idx < litCount) { w.classList.add('lit'); } else { w.classList.remove('lit'); }
+      });
+    });
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
 })();
 </script>
 </body>
