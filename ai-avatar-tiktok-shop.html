@@ -1149,6 +1149,225 @@ html { scroll-padding-top: 78px; }
     object-position: 58% 30%;
   }
 }
+
+/* Mobile stability mode: native vertical flow, no observer-dependent content. */
+@media (max-width: 800px) {
+  html {
+    scroll-behavior: auto;
+    scroll-padding-top: 16px;
+  }
+
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    overscroll-behavior-y: auto;
+    touch-action: pan-y;
+  }
+
+  .nav {
+    position: relative;
+    top: auto;
+    height: 58px;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    grid-template: none;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .hero-copy,
+  .hero-media {
+    grid-area: auto;
+  }
+
+  .hero-copy {
+    order: 1;
+    min-height: 0;
+    padding: 54px 20px 38px;
+  }
+
+  .hero-media {
+    position: relative;
+    order: 2;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    aspect-ratio: 4 / 5;
+  }
+
+  .hero-media img {
+    width: 100%;
+    height: 100%;
+    object-position: 50% 35%;
+    filter: none;
+  }
+
+  .hero-media::before {
+    background: linear-gradient(180deg, transparent 72%, rgb(9 9 10 / .42));
+  }
+
+  .hero h1 {
+    max-width: 10ch;
+    font-size: clamp(43px, 13vw, 60px);
+    text-shadow: none;
+  }
+
+  .hero-lead {
+    max-width: 34ch;
+    color: var(--muted);
+    text-shadow: none;
+  }
+
+  .button-primary,
+  .hero .button-primary,
+  .entry-path .button-primary,
+  .purchase .button-primary {
+    position: static;
+    display: inline-flex;
+    width: 100%;
+    max-width: 100%;
+    min-height: 52px;
+    height: auto;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero .price-note {
+    color: var(--quiet);
+    text-shadow: none;
+  }
+
+  .revenue-story {
+    display: block;
+    overflow: visible;
+  }
+
+  .route-visual {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: 0;
+    overflow: hidden;
+    padding: 64px 20px 40px;
+  }
+
+  .route-visual::before {
+    display: none;
+  }
+
+  .route-map {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    inset: auto;
+    gap: 10px 14px;
+    margin: 34px 0 0;
+    padding: 22px 0 0;
+    border: 0;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .route-map li,
+  .route-visual[data-active-route] .route-map li {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    min-width: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--muted);
+    opacity: 1;
+    transform: none;
+  }
+
+  .route-map span {
+    flex: 0 0 18px;
+  }
+
+  .route-list {
+    padding: 0 20px 64px;
+  }
+
+  .route {
+    display: block;
+    min-height: 0;
+    margin: 0;
+    padding: 48px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .route::before {
+    display: none;
+  }
+
+  .route > div,
+  .route.is-active > div {
+    width: 100%;
+    opacity: 1;
+    transform: none;
+  }
+
+  .route h3,
+  .route.is-active h3 {
+    color: var(--text);
+  }
+
+  .route dl {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .workflow-copy,
+  .entry-path-copy {
+    position: relative;
+    top: auto;
+  }
+
+  .workflow-media {
+    height: auto;
+    min-height: 0;
+  }
+
+  section,
+  .purchase,
+  .offer-panel {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero-copy {
+    padding-inline: 18px;
+  }
+
+  .hero-media {
+    aspect-ratio: 4 / 5;
+  }
+
+  .route-visual,
+  .route-list {
+    padding-inline: 18px;
+  }
+
+  .route-map {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .route {
+    padding-block: 42px;
+  }
+}
 </style>
 <link href="https://kviatcovskii.github.io/hustlestack-site/" rel="canonical"/><meta content="en_US" property="og:locale"/></head>
 <body>
