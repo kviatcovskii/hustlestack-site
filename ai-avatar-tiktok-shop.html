@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#0B0B0C" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
   :root {
     --bg: #0B0B0C;
@@ -25,6 +25,7 @@
     --display: 'Archivo Black', 'Arial Black', sans-serif;
     --mono: 'JetBrains Mono', 'Consolas', 'SFMono-Regular', monospace;
     --body: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
   }
   * { box-sizing: border-box; }
   html { background: var(--bg); }
@@ -208,6 +209,108 @@
     .number-band .cell { flex: 1 1 100%; border-right: none; border-bottom: 1px solid var(--line); padding: 0 0 18px; margin: 0 0 18px; }
     .number-band .cell:last-child { border-bottom: none; }
   }
+  /* ---- ato cinematografico: moldura presa, serifa gigante, brilho quente ---- */
+  .act { padding: 0; }
+  .act-rail { position: relative; height: 400vh; }
+  .act-stage {
+    position: sticky; top: 0; height: 100vh; overflow: hidden; background: #08070A;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+
+  /* rotulos minusculos nos cantos, como no material de referencia */
+  .act-mark {
+    position: absolute; z-index: 5; font-family: var(--mono); font-size: 10px;
+    letter-spacing: .28em; color: rgba(242,236,225,.34); pointer-events: none;
+  }
+  .act-mark.tl { top: 26px; left: 5vw; }
+  .act-mark.tr { top: 26px; right: 5vw; }
+  .act-mark.bl { bottom: 26px; left: 5vw; }
+
+  /* brilho ambar por tras de tudo */
+  .act-glow {
+    position: absolute; z-index: 0; left: 62%; top: 47%; width: min(76vw, 820px);
+    aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle, rgba(226,143,107,.40) 0%, rgba(201,69,46,.15) 44%, transparent 71%);
+    filter: blur(30px); will-change: transform;
+  }
+
+  /* a palavra serifada gigante, sangrando pelas duas bordas */
+  .act-word {
+    position: absolute; z-index: 1; left: 50%; top: 46%; translate: -50% -50%;
+    font-family: var(--serif); font-weight: 600; white-space: nowrap;
+    font-size: clamp(88px, 20vw, 300px); line-height: 1; letter-spacing: .08em;
+    color: rgba(242,236,225,.085); pointer-events: none; will-change: transform, opacity;
+  }
+
+  /* a moldura que fica PRESA enquanto o conteudo muda */
+  .act-frame {
+    position: absolute; z-index: 2; right: 9vw; top: 50%; translate: 0 -50%;
+    width: min(33vw, 400px); aspect-ratio: 4/5; will-change: transform;
+  }
+  .act-frame img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: contrast(1.06) saturate(.88) brightness(.82);
+  }
+  .act-frame .corner { position: absolute; width: 26px; height: 26px; border-color: var(--accent); z-index: 3; }
+  .act-frame .corner.tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+  .act-frame .corner.br { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
+
+  /* coluna de texto: entra e sai */
+  .act-copy { position: absolute; z-index: 4; left: 9vw; top: 50%; translate: 0 -50%; width: min(40vw, 470px); }
+  .act-slide { position: absolute; inset: auto 0 auto 0; opacity: 0; will-change: opacity, transform; }
+  .act-slide .n {
+    display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .26em;
+    color: var(--accent); margin-bottom: 20px;
+  }
+  .act-slide h3 {
+    font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 4.4vw, 60px);
+    line-height: 1.06; letter-spacing: .005em; margin: 0 0 18px; color: var(--ink);
+  }
+  .act-slide p { font-size: 15px; color: var(--muted); max-width: 34ch; margin: 0; line-height: 1.7; }
+  .act-slide .rule { width: 54px; height: 1px; background: var(--accent); margin: 22px 0 0; opacity: .7; }
+
+  /* a fileira de tres que atravessa a tela no fim */
+  .act-tri {
+    position: absolute; z-index: 6; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; opacity: 0; pointer-events: none; will-change: opacity;
+  }
+  .act-tri .pane { position: relative; overflow: hidden; background: #0B0B0C; }
+  .act-tri .pane img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: contrast(1.05) saturate(.85) brightness(.5);
+  }
+  .act-tri .pane.type { display: grid; place-items: center; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+  .act-tri .pane.type span {
+    font-family: var(--serif); font-size: clamp(26px, 3.4vw, 52px); color: rgba(242,236,225,.22);
+    letter-spacing: .12em;
+  }
+  .act-tri .line {
+    position: absolute; z-index: 2; left: 0; right: 0; top: 50%; translate: 0 -50%; text-align: center;
+    font-family: var(--serif); font-size: clamp(22px, 3vw, 44px); color: var(--ink);
+    letter-spacing: .02em; padding: 0 6vw; text-shadow: 0 4px 40px rgba(0,0,0,.9);
+  }
+
+  @media (max-width: 860px) {
+    .act-rail { height: 340vh; }
+    .act-frame { right: 50%; translate: 50% -50%; top: 34%; width: min(58vw, 250px); }
+    .act-copy { left: 0; right: 0; width: auto; padding: 0 26px; top: auto; bottom: 12vh; translate: 0 0; }
+    .act-slide p { max-width: none; }
+    .act-word { top: 33%; font-size: clamp(64px, 26vw, 200px); }
+    .act-glow { left: 50%; top: 34%; }
+    .act-tri { grid-template-columns: 1fr; }
+    .act-tri .pane:nth-child(2) { display: none; }
+    .act-mark.tr { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .act-rail { height: auto; }
+    .act-stage { position: static; height: auto; padding: 64px 0; }
+    .act-glow, .act-word, .act-tri { display: none; }
+    .act-frame { position: static; translate: none; width: min(70vw, 320px); margin: 0 auto 40px; }
+    .act-copy { position: static; translate: none; width: auto; padding: 0 26px; }
+    .act-slide { position: static; opacity: 1 !important; transform: none !important; margin-bottom: 44px; }
+  }
+
 </style>
 </head>
 <body>
@@ -227,15 +330,15 @@
   <div data-lang="en">
     <div class="en">
       <div class="kicker">HustleStack Collection</div>
-      <h1>An AI avatar<br />that <em>sells.</em><br />Without you on camera.</h1>
-      <p class="sub">Build a realistic avatar with Higgsfield, post every day, and earn commission selling other people's products on TikTok Shop Affiliate. No filming, no team, no inventory.</p>
-      <a class="btn-primary" href="#pricing">Get the guide now</a>
+      <h1>An AI avatar<br />built to <em>sell.</em><br />Without you on camera.</h1>
+      <p class="sub">Build a realistic avatar with Higgsfield, create a repeatable posting workflow, and learn how TikTok Shop Affiliate commissions work. No filming, no team, no inventory.</p>
+      <a class="btn-primary" href="#pricing">Get both PDFs</a>
     </div>
     <div class="es">
       <div class="kicker">HustleStack Collection</div>
-      <h1>Un avatar de IA<br />que <em>vende.</em><br />Sin aparecer en cámara.</h1>
-      <p class="sub">Crea un avatar realista con Higgsfield, publica todos los días y gana comisión vendiendo productos de terceros con TikTok Shop Afiliados. Sin grabar, sin equipo, sin inventario.</p>
-      <a class="btn-primary" href="#pricing">Quiero la guía ahora</a>
+      <h1>Un avatar de IA<br />creado para <em>vender.</em><br />Sin aparecer en cámara.</h1>
+      <p class="sub">Crea un avatar realista con Higgsfield, monta una rutina de publicación y aprende cómo funcionan las comisiones de TikTok Shop Afiliados. Sin grabar, sin equipo, sin inventario.</p>
+      <a class="btn-primary" href="#pricing">Recibir los dos PDF</a>
     </div>
   </div>
   <div class="hero-frame" data-scene-root>
@@ -258,10 +361,87 @@
   <p class="reveal-text es" data-reveal>Cada técnica de esta guía viene del mismo flujo de avatar probado en esta cuenta, no es contenido reciclado de IA.</p>
 </section>
 
+<section class="act">
+  <div class="act-rail">
+    <div class="act-stage">
+      <span class="act-mark tl">HUSTLESTACK</span>
+      <span class="act-mark tr">THE METHOD</span>
+      <span class="act-mark bl">SCROLL</span>
+
+      <div class="act-glow" aria-hidden="true"></div>
+      <div class="act-word" aria-hidden="true">BUILD</div>
+
+      <div class="act-frame">
+        <div class="corner tl"></div>
+        <div class="corner br"></div>
+        <img src="assets/landing/avatar-hero-sells.jpg" alt="The AI avatar identity this guide teaches you to build" />
+      </div>
+
+      <div class="act-copy">
+        <div class="act-slide" data-lang="en" data-word="BUILD">
+          <div class="en">
+            <span class="n">01 / BUILD</span>
+            <h3>One avatar,<br />built once.</h3>
+            <p>Higgsfield makes the face. You never step in front of a camera.</p>
+            <div class="rule"></div>
+          </div>
+          <div class="es">
+            <span class="n">01 / CREAR</span>
+            <h3>Un avatar,<br />creado una vez.</h3>
+            <p>Higgsfield crea el rostro. Tú nunca apareces frente a la cámara.</p>
+            <div class="rule"></div>
+          </div>
+        </div>
+
+        <div class="act-slide" data-lang="en" data-word="POST">
+          <div class="en">
+            <span class="n">02 / POST</span>
+            <h3>Three to four<br />posts a day.</h3>
+            <p>The avatar does the filming. You do the picking.</p>
+            <div class="rule"></div>
+          </div>
+          <div class="es">
+            <span class="n">02 / PUBLICAR</span>
+            <h3>Tres o cuatro<br />posts al día.</h3>
+            <p>El avatar graba. Tú eliges qué vender.</p>
+            <div class="rule"></div>
+          </div>
+        </div>
+
+        <div class="act-slide" data-lang="en" data-word="EARN">
+          <div class="en">
+            <span class="n">03 / EARN</span>
+            <h3>You never touch<br />the product.</h3>
+            <p>TikTok Shop Affiliate pays the commission. No inventory, no shipping, no team.</p>
+            <div class="rule"></div>
+          </div>
+          <div class="es">
+            <span class="n">03 / GANAR</span>
+            <h3>Nunca tocas<br />el producto.</h3>
+            <p>TikTok Shop Afiliados paga la comisión. Sin inventario, sin envíos, sin equipo.</p>
+            <div class="rule"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="act-tri" aria-hidden="true">
+        <div class="pane"><img src="assets/landing/avatar-hero-sells.jpg" alt="" /></div>
+        <div class="pane type"><span>24/7</span></div>
+        <div class="pane"><img src="assets/landing/avatar-hero.jpg" alt="" /></div>
+        <div class="line" data-lang="en">
+          <span class="en">No camera. No team. No inventory.</span>
+          <span class="es">Sin cámara. Sin equipo. Sin inventario.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <section data-lang="en">
   <div class="section-inner">
     <div class="en">
-      <h2>It's not about showing up more. It's about an avatar that works 24/7.</h2>
+      <h2>It's not about showing up more. It's about building a repeatable avatar workflow.</h2>
       <div class="number-band">
         <div class="cell"><span class="v">38</span><span class="l">pages, both languages included in one purchase</span></div>
         <div class="cell"><span class="v">1,000</span><span class="l">followers minimum to join TikTok Shop Affiliate</span></div>
@@ -269,7 +449,7 @@
       </div>
     </div>
     <div class="es">
-      <h2>No se trata de aparecer más. Se trata de un avatar que trabaja 24/7.</h2>
+      <h2>No se trata de aparecer más. Se trata de construir un flujo de avatar repetible.</h2>
       <div class="number-band">
         <div class="cell"><span class="v">38</span><span class="l">páginas, los dos idiomas incluidos en una sola compra</span></div>
         <div class="cell"><span class="v">1.000</span><span class="l">seguidores mínimos para entrar en TikTok Shop Afiliados</span></div>
@@ -282,20 +462,20 @@
 <section class="raised" data-lang="en">
   <div class="section-inner">
     <div class="en">
-      <h2>What $10,000/month would actually take.</h2>
+      <h2>Run the numbers with your own account.</h2>
       <div class="number-band">
         <div class="cell"><span class="v">3-4</span><span class="l">posts a day, the avatar doing the filming</span></div>
-        <div class="cell"><span class="v">~$25</span><span class="l">hypothetical average commission per sale, mid-range TikTok Shop category</span></div>
-        <div class="cell"><span class="v">400</span><span class="l">sales/month to hit $10,000. About 13 a day across your posts</span></div>
+        <div class="cell"><span class="v">varies</span><span class="l">commission per sale depends on category, product and market</span></div>
+        <div class="cell"><span class="v">yours</span><span class="l">monthly sales depend on reach, conversion and product fit</span></div>
       </div>
       <p class="footnote">This is illustrative math, not a result, an average, or a guarantee. TikTok Shop commission rates vary by category (roughly 5-20%) and depend entirely on the product and your audience. We don't have earnings data from this guide's readers to report. Nobody here filmed a single video to hit this number.</p>
     </div>
     <div class="es">
-      <h2>Lo que $10.000/mes realmente pediría.</h2>
+      <h2>Haz la cuenta con los datos de tu propia cuenta.</h2>
       <div class="number-band">
         <div class="cell"><span class="v">3-4</span><span class="l">posts al día, el avatar hace la grabación</span></div>
-        <div class="cell"><span class="v">~$25</span><span class="l">comisión promedio hipotética por venta, categoría media de TikTok Shop</span></div>
-        <div class="cell"><span class="v">400</span><span class="l">ventas/mes para llegar a $10.000. Unas 13 al día entre tus posts</span></div>
+        <div class="cell"><span class="v">varía</span><span class="l">la comisión por venta depende de la categoría, el producto y el mercado</span></div>
+        <div class="cell"><span class="v">tuyas</span><span class="l">las ventas mensuales dependen del alcance, la conversión y el producto</span></div>
       </div>
       <p class="footnote">Esto es una cuenta ilustrativa, no un resultado, un promedio ni una garantía. La comisión de TikTok Shop varía por categoría (más o menos 5-20%) y depende del producto y tu audiencia. No tenemos datos de ganancias de lectores de esta guía para reportar. Nadie aquí grabó un solo video para llegar a este número.</p>
     </div>
@@ -307,8 +487,8 @@
     <div class="en">
       <h2>The avatar isn't the only thing Higgsfield builds.</h2>
       <div class="number-band">
-        <div class="cell"><span class="v">2nd</span><span class="l">income stream: studio product photos, no camera or affiliate account needed</span></div>
-        <div class="cell"><span class="v">1</span><span class="l">prompt to get a full grid of studio-lit product shots back</span></div>
+        <div class="cell"><span class="v">2nd</span><span class="l">use case: studio product photos, no camera or affiliate account needed</span></div>
+        <div class="cell"><span class="v">1</span><span class="l">prompt can produce a grid of studio-lit product shots</span></div>
         <div class="cell"><span class="v">15s</span><span class="l">cinematic product video generated from one reference photo</span></div>
       </div>
       <p class="footnote">Chapter 21 walks through this with real screenshots. The same connector from Chapter 2, a different kind of request. Useful even for sellers who don't want an avatar at all, just better product photos than their own camera produces.</p>
@@ -316,8 +496,8 @@
     <div class="es">
       <h2>El avatar no es lo único que construye Higgsfield.</h2>
       <div class="number-band">
-        <div class="cell"><span class="v">2do</span><span class="l">ingreso: fotos de producto de estudio, sin cámara ni cuenta de afiliado</span></div>
-        <div class="cell"><span class="v">1</span><span class="l">prompt para recibir una cuadrícula completa de fotos de producto de estudio</span></div>
+        <div class="cell"><span class="v">2do</span><span class="l">uso: fotos de producto de estudio, sin cámara ni cuenta de afiliado</span></div>
+        <div class="cell"><span class="v">1</span><span class="l">prompt puede producir una cuadrícula de fotos de producto de estudio</span></div>
         <div class="cell"><span class="v">15s</span><span class="l">video de producto cinematográfico generado desde una sola foto de referencia</span></div>
       </div>
       <p class="footnote">El Capítulo 21 explica esto con capturas de pantalla reales. El mismo conector del Capítulo 2, un tipo de pedido diferente. Útil incluso para vendedores que no quieren un avatar, solo mejores fotos de producto que las de su propia cámara.</p>
@@ -329,11 +509,11 @@
   <div class="section-inner image-row">
     <div class="text">
       <div class="en">
-        <h2>Brands pay per clip. You don't need a product to sell one.</h2>
+        <h2>Some brand campaigns pay per clip. You may not need your own product.</h2>
         <p class="footnote" style="margin-top:0;">1,907 clips submitted platform-wide in a single day. 10.3M views tracked across those clips, $2,457 paid out in 2 days. $0 product cost: the brand supplies the footage, you supply the edit. Chapter 22 also covers cloning any channel's visual style from one screenshot, useful for your own avatar's look, not just this technique. Full walkthrough and both connector URLs (Genmax + Content Rewards) are in Chapters 22-23.</p>
       </div>
       <div class="es">
-        <h2>Las marcas pagan por clip. No necesitas un producto para vender.</h2>
+        <h2>Algunas campañas pagan por clip. Puede que no necesites un producto propio.</h2>
         <p class="footnote" style="margin-top:0;">1.907 clips enviados en toda la plataforma en un solo día. 10,3M views registradas en esos clips, $2.457 pagados en 2 días. $0 costo de producto: la marca provee el material, tú pones la edición. El Capítulo 22 también explica cómo clonar el estilo visual de cualquier canal desde una sola captura. La guía completa y las dos URLs de conector (Genmax + Content Rewards) están en los Capítulos 22-23.</p>
       </div>
     </div>
@@ -345,24 +525,24 @@
   <div class="section-inner">
     <div class="en">
       <div class="kicker">What's inside</div>
-      <h2>From avatar to first commission.</h2>
+      <h2>From avatar to affiliate workflow.</h2>
       <div class="curriculum">
         <div class="cur-item"><span class="n">3</span><div><p class="t">Creating a realistic avatar with Soul ID</p><p class="d">A fixed identity, consistent in every video, without the "talking doll" look.</p></div></div>
-        <div class="cur-item"><span class="n">5</span><div><p class="t">Writing a selling script that converts</p><p class="d">Hook, proof and call to action. The template that sells like a recommendation, not an ad.</p></div></div>
+        <div class="cur-item"><span class="n">5</span><div><p class="t">Writing a sales script designed to convert</p><p class="d">Hook, proof and call to action. The template that sells like a recommendation, not an ad.</p></div></div>
         <div class="cur-item"><span class="n">7</span><div><p class="t">TikTok Shop Affiliate in practice</p><p class="d">Signup, open categories, and how to pick a product with real commission.</p></div></div>
-        <div class="cur-item"><span class="n">9</span><div><p class="t">One avatar, two channels</p><p class="d">The same avatar earning on Instagram too, with zero duplicated work.</p></div></div>
+        <div class="cur-item"><span class="n">9</span><div><p class="t">One avatar, two channels</p><p class="d">The same avatar adapted for Instagram too, without rebuilding the identity.</p></div></div>
         <div class="cur-item"><span class="n">21</span><div><p class="t">Beyond the talking avatar: product photos &amp; ads</p><p class="d">Studio product photography and 15-second product video, same connector, real screenshots.</p></div></div>
         <div class="cur-item"><span class="n">23</span><div><p class="t">Get paid to clip: the campaign marketplaces</p><p class="d">Brands pay per clip for footage they provide. No product, no affiliate account.</p></div></div>
       </div>
     </div>
     <div class="es">
       <div class="kicker">Qué incluye</div>
-      <h2>Del avatar a la primera comisión.</h2>
+      <h2>Del avatar al flujo de afiliación.</h2>
       <div class="curriculum">
         <div class="cur-item"><span class="n">3</span><div><p class="t">Creando un avatar realista con Soul ID</p><p class="d">Una identidad fija, consistente en cada video, sin el efecto "muñeco hablando".</p></div></div>
-        <div class="cur-item"><span class="n">5</span><div><p class="t">Escribiendo un guion de venta que convierte</p><p class="d">Gancho, prueba y llamada a la acción. La plantilla que vende como una recomendación, no como un anuncio.</p></div></div>
+        <div class="cur-item"><span class="n">5</span><div><p class="t">Escribiendo un guion de venta pensado para convertir</p><p class="d">Gancho, prueba y llamada a la acción. La plantilla que vende como una recomendación, no como un anuncio.</p></div></div>
         <div class="cur-item"><span class="n">7</span><div><p class="t">TikTok Shop Afiliados en la práctica</p><p class="d">Registro, categorías abiertas y cómo elegir un producto con comisión real.</p></div></div>
-        <div class="cur-item"><span class="n">9</span><div><p class="t">Un avatar, dos canales</p><p class="d">El mismo avatar ganando también en Instagram, sin trabajo duplicado.</p></div></div>
+        <div class="cur-item"><span class="n">9</span><div><p class="t">Un avatar, dos canales</p><p class="d">El mismo avatar adaptado también a Instagram, sin reconstruir la identidad.</p></div></div>
         <div class="cur-item"><span class="n">21</span><div><p class="t">Más allá del avatar que habla: fotos de producto y anuncios</p><p class="d">Fotografía de producto de estudio y video de 15 segundos, mismo conector, capturas reales.</p></div></div>
         <div class="cur-item"><span class="n">23</span><div><p class="t">Cobra por editar clips: los marketplaces de campañas</p><p class="d">Las marcas pagan por clip con material que ellas proveen. Sin producto, sin cuenta de afiliado.</p></div></div>
       </div>
@@ -374,17 +554,21 @@
   <div class="section-inner" style="max-width:760px;">
     <div class="en">
       <h2>Questions people actually ask.</h2>
-      <details class="faq-item" open><summary>How do I get the guide?</summary><p>Instant PDF, delivered straight to your email right after checkout. Both languages, same file.</p></details>
-      <details class="faq-item"><summary>Do I need Higgsfield already?</summary><p>No. The guide walks through setting up your avatar from scratch, step by step.</p></details>
-      <details class="faq-item"><summary>Do I have to show my face at all?</summary><p>No, that's the entire point. The avatar is the one on camera, not you.</p></details>
-      <details class="faq-item"><summary>Is this a subscription?</summary><p>No. One-time payment, yours forever. No recurring charge, no upsell funnel after checkout.</p></details>
+      <details class="faq-item" open><summary>Do I have to show my face?</summary><p>Not once. The avatar is the face, and it stays consistent across your videos so the account can build recognition.</p></details>
+      <details class="faq-item"><summary>Do I really need 1,000 followers?</summary><p>To join TikTok Shop Affiliate, yes. That is the platform's requirement, and the guide explains the workflow without pretending the gate does not exist.</p></details>
+      <details class="faq-item"><summary>Will I get banned for using AI?</summary><p>Using AI itself is not the issue. Label the content, disclose that the character is AI, and follow the platform's current rules.</p></details>
+      <details class="faq-item"><summary>I tried AI videos before and nothing happened. Why is this different?</summary><p>An avatar alone earns nothing. It still needs a suitable product, a sales-focused script and a posting routine. The guide shows how those pieces fit together without promising results.</p></details>
+      <details class="faq-item"><summary>Which language is it in?</summary><p>Both. The English and Spanish PDFs arrive together in one purchase.</p></details>
+      <details class="faq-item"><summary>How long is it?</summary><p>38 pages. It is a practical build manual rather than a motivational book.</p></details>
     </div>
     <div class="es">
-      <h2>Preguntas que la gente realmente hace.</h2>
-      <details class="faq-item" open><summary>¿Cómo recibo la guía?</summary><p>PDF al instante, directo a tu correo justo después de pagar. Los dos idiomas, en el mismo archivo.</p></details>
-      <details class="faq-item"><summary>¿Necesito tener Higgsfield ya?</summary><p>No. La guía explica cómo crear tu avatar desde cero, paso a paso.</p></details>
-      <details class="faq-item"><summary>¿Tengo que mostrar mi cara?</summary><p>No, de eso se trata. El avatar es quien aparece en cámara, no tú.</p></details>
-      <details class="faq-item"><summary>¿Es una suscripción?</summary><p>No. Pago único, tuyo para siempre. Sin cargo recurrente, sin funnel de upsell después de comprar.</p></details>
+      <h2>Preguntas que la gente hace de verdad.</h2>
+      <details class="faq-item" open><summary>¿Tengo que salir en cámara?</summary><p>Ni una vez. El avatar es la cara y mantiene una identidad consistente para que la cuenta pueda ganar reconocimiento.</p></details>
+      <details class="faq-item"><summary>¿De verdad necesito 1.000 seguidores?</summary><p>Para entrar en TikTok Shop Afiliados, sí. Es un requisito de la plataforma, y la guía explica el flujo sin fingir que esa barrera no existe.</p></details>
+      <details class="faq-item"><summary>¿Me pueden penalizar por usar IA?</summary><p>Usar IA no es el problema por sí solo. Etiqueta el contenido, informa que el personaje es IA y sigue las reglas actuales de la plataforma.</p></details>
+      <details class="faq-item"><summary>Ya probé vídeos con IA y no pasó nada. ¿Por qué esto es distinto?</summary><p>Un avatar por sí solo no genera ingresos. También necesita un producto adecuado, un guion orientado a la venta y una rutina de publicación. La guía conecta esas piezas sin prometer resultados.</p></details>
+      <details class="faq-item"><summary>¿En qué idioma está?</summary><p>En los dos. Los PDF en español e inglés llegan juntos en una sola compra.</p></details>
+      <details class="faq-item"><summary>¿Cuánto ocupa?</summary><p>38 páginas. Es un manual práctico de construcción, no un libro motivacional.</p></details>
     </div>
   </div>
 </section>
@@ -398,7 +582,7 @@
         <div class="pn">THE AI AVATAR PLAYBOOK</div>
         <div class="pv">$30<small>&nbsp;USD, one-time</small></div>
         <p class="pd">38 pages. You get the English and Spanish PDF together, no need to choose.</p>
-        <a class="btn-primary" href="https://pay.kiwify.com/f68zred" target="_blank" rel="noopener">Get the guide</a>
+        <a class="btn-primary" href="https://pay.kiwify.com/f68zred" target="_blank" rel="noopener">Get both PDFs</a>
       </div>
       <p class="secure-note">Secure checkout. Both PDFs delivered to your email right after purchase confirmation.</p>
     </div>
@@ -409,7 +593,7 @@
         <div class="pn">EL MANUAL DEL AVATAR DE IA</div>
         <div class="pv">$30<small>&nbsp;USD, pago único</small></div>
         <p class="pd">38 páginas. Recibes el PDF en español y en inglés juntos, sin tener que elegir. Tu banco hace la conversión, unos 28€.</p>
-        <a class="btn-primary" href="https://pay.kiwify.com/f68zred" target="_blank" rel="noopener">Quiero la guía</a>
+        <a class="btn-primary" href="https://pay.kiwify.com/f68zred" target="_blank" rel="noopener">Recibir los dos PDF</a>
       </div>
       <p class="secure-note">Pago seguro. Los dos PDF se entregan por correo justo después de confirmar la compra.</p>
     </div>
@@ -436,14 +620,16 @@ function setLang(lang) {
   setLang(initial);
 })();
 
+window.HSMouse = { x: 0, y: 0 };
+window.addEventListener('mousemove', function (e) {
+  window.HSMouse.x = (e.clientX / window.innerWidth) - 0.5;
+  window.HSMouse.y = (e.clientY / window.innerHeight) - 0.5;
+}, { passive: true });
+
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) return;
-  var mouseX = 0, mouseY = 0;
-  window.addEventListener('mousemove', function (e) {
-    mouseX = (e.clientX / window.innerWidth) - 0.5;
-    mouseY = (e.clientY / window.innerHeight) - 0.5;
-  }, { passive: true });
+  var hsm = window.HSMouse;
   var layers = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
   if (!layers.length) return;
   function frame() {
@@ -455,7 +641,7 @@ function setLang(lang) {
       progress = Math.max(0, Math.min(1, progress));
       var range = parseFloat(el.dataset.range || '30');
       var y = (progress - 0.5) * range;
-      el.style.transform = 'translate3d(' + (mouseX * 6).toFixed(1) + 'px,' + (y + mouseY * 4).toFixed(1) + 'px,0)';
+      el.style.transform = 'translate3d(' + (hsm.x * 18).toFixed(1) + 'px,' + (y + hsm.y * 10).toFixed(1) + 'px,0)';
     });
     requestAnimationFrame(frame);
   }
@@ -521,8 +707,15 @@ function setLang(lang) {
   window.addEventListener('resize', resize);
 
   var clock = new THREE.Clock();
+  var badgeVisible = true;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) {
+      badgeVisible = en[0].isIntersecting;
+    }, { rootMargin: '120px' }).observe(wrap);
+  }
   function animate() {
     requestAnimationFrame(animate);
+    if (!badgeVisible) return;
     var t = clock.getElapsedTime();
     points.rotation.y = Math.sin(t * 0.4) * 0.4;
     points.position.y = Math.sin(t * 0.8) * 0.08;
@@ -573,5 +766,104 @@ function setLang(lang) {
   requestAnimationFrame(frame);
 })();
 </script>
+<script>
+/* ---- ato cinematografico: um numero de scroll move moldura, palavra e copy ---- */
+(function () {
+  var rail = document.querySelector('.act-rail');
+  var stage = document.querySelector('.act-stage');
+  if (!rail || !stage) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var glow = stage.querySelector('.act-glow');
+  var word = stage.querySelector('.act-word');
+  var frame = stage.querySelector('.act-frame');
+  var slides = Array.prototype.slice.call(stage.querySelectorAll('.act-slide'));
+  var tri = stage.querySelector('.act-tri');
+  var panes = tri ? Array.prototype.slice.call(tri.querySelectorAll('.pane')) : [];
+  var mouse = window.HSMouse || { x: 0, y: 0 };
+
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function seg(p, a, b) { return clamp01((p - a) / (b - a)); }
+  function ease(v) { return v * v * (3 - 2 * v); }
+  /* aparece E some dentro da propria janela */
+  function win(p, inA, inB, outA, outB) {
+    return Math.min(seg(p, inA, inB), 1 - seg(p, outA, outB));
+  }
+
+  var WINS = [
+    [0.05, 0.14, 0.26, 0.33],
+    [0.36, 0.44, 0.53, 0.60],
+    [0.62, 0.70, 0.78, 0.84]
+  ];
+
+  var visible = false;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) { visible = e[0].isIntersecting; },
+      { rootMargin: '150px' }).observe(rail);
+  } else { visible = true; }
+
+  var lastWord = '';
+  function frameLoop() {
+    requestAnimationFrame(frameLoop);
+    if (!visible) return;
+
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var box = rail.getBoundingClientRect();
+    var span = box.height - vh;
+    var p = span > 0 ? clamp01(-box.top / span) : 0;
+
+    /* copy: cada bloco entra e sai */
+    var active = -1, bestA = 0;
+    for (var i = 0; i < slides.length; i++) {
+      var a = WINS[i] ? ease(win(p, WINS[i][0], WINS[i][1], WINS[i][2], WINS[i][3])) : 0;
+      slides[i].style.opacity = a.toFixed(3);
+      slides[i].style.transform = 'translate3d(0,' + ((1 - a) * 34).toFixed(1) + 'px,0)';
+      if (a > bestA) { bestA = a; active = i; }
+    }
+
+    /* a palavra gigante troca junto com o bloco ativo */
+    if (word) {
+      var wa = bestA;
+      if (active >= 0) {
+        var nw = slides[active].getAttribute('data-word') || '';
+        if (nw !== lastWord) { word.textContent = nw; lastWord = nw; }
+      }
+      var drift = (p - 0.5) * 90;
+      word.style.opacity = (wa * 0.9).toFixed(3);
+      word.style.transform = 'translate3d(' + (drift + mouse.x * 26).toFixed(1) + 'px,' +
+        (mouse.y * 14).toFixed(1) + 'px,0) scale(' + (0.94 + wa * 0.10).toFixed(3) + ')';
+    }
+
+    /* a moldura fica PRESA e so a camera anda: chega, aproxima, afasta, sai */
+    if (frame) {
+      var s = 0.80 + ease(seg(p, 0.00, 0.12)) * 0.20
+                   + ease(seg(p, 0.12, 0.74)) * 0.16
+                   - ease(seg(p, 0.78, 0.92)) * 0.26;
+      var fo = Math.min(seg(p, 0.0, 0.08), 1 - seg(p, 0.82, 0.90));
+      frame.style.opacity = fo.toFixed(3);
+      frame.style.transform = 'translate3d(' + (mouse.x * -16).toFixed(1) + 'px,' +
+        (-50 + mouse.y * -1.4) + '%,0) scale(' + s.toFixed(3) + ')';
+    }
+
+    if (glow) {
+      var gs = 0.9 + ease(seg(p, 0.0, 0.7)) * 0.35;
+      glow.style.transform = 'translate3d(calc(-50% + ' + (mouse.x * 38).toFixed(1) + 'px), calc(-50% + ' +
+        (mouse.y * 24).toFixed(1) + 'px), 0) scale(' + gs.toFixed(3) + ')';
+    }
+
+    /* a fileira de tres atravessa e fecha o ato */
+    if (tri) {
+      var ta = ease(seg(p, 0.84, 0.93));
+      tri.style.opacity = ta.toFixed(3);
+      for (var k = 0; k < panes.length; k++) {
+        var dir = k % 2 === 0 ? 1 : -1;
+        panes[k].style.transform = 'translate3d(0,' + ((1 - ta) * 100 * dir).toFixed(1) + '%,0)';
+      }
+    }
+  }
+  requestAnimationFrame(frameLoop);
+})();
+</script>
+
 </body>
 </html>
