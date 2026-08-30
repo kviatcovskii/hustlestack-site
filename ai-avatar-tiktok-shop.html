@@ -989,9 +989,70 @@ h2 { font-size: clamp(38px, 4.8vw, 70px); }
   .entry-path-step { grid-template-columns: 38px 1fr; }
   .entry-path-copy > p { font-size: 16px; }
 }
-</style>
+
+/* Physical interaction polish: progress, depth, and unambiguous controls. */
+html, body { max-width: 100%; overflow-x: clip; }
+html { scroll-padding-top: 78px; }
+.purchase, .offer-panel, .offer-panel > *, .section-shell { min-width: 0; }
+.scroll-progress {
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  pointer-events: none;
+  background: var(--gold);
+  transform: scaleX(var(--page-progress, 0));
+  transform-origin: 0 50%;
+  will-change: transform;
+}
+.nav { transition: height .35s var(--ease-editorial), background-color .35s ease, box-shadow .35s ease; }
+.nav.is-scrolled {
+  height: 60px;
+  background: rgb(9 9 10 / .94);
+  box-shadow: 0 18px 42px rgb(0 0 0 / .24);
+}
+.button-primary::after,
+.nav-cta::after {
+  content: "";
+  display: block;
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform .22s var(--ease-editorial);
+}
+.button-primary:hover::after,
+.nav-cta:hover::after { transform: translateX(3px) rotate(45deg); }
+.offer-panel li::before {
+  top: .72em;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  transform: rotate(45deg);
+}
+.hero-media, .workflow-shot { transform: translateZ(0); }
+.hero-media img { will-change: transform; }
+@media (hover: hover) and (pointer: fine) {
+  .workflow-shot img { transition: transform .8s var(--ease-editorial), filter .8s ease; }
+  .workflow-shot:hover img { transform: scale(1.018); filter: saturate(.9) contrast(1.04); }
+}
+@media (max-width: 800px) {
+  html { scroll-padding-top: 66px; }
+  .nav.is-scrolled { height: 56px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
+  .nav { transition: none; }
+}</style>
 <link href="https://kviatcovskii.github.io/hustlestack-site/" rel="canonical"/><meta content="en_US" property="og:locale"/></head>
 <body>
+<div class="scroll-progress" aria-hidden="true"></div>
 <title>The AI Avatar Playbook | HustleStack</title>
 <nav class="nav">
 <a aria-label="HustleStack home" class="brand" href="#top">HUSTLESTACK</a>
@@ -1293,5 +1354,28 @@ function initMotion() {
 
 initMotion();
 </script>
-</body>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var nav = document.querySelector('.nav');
+  var queued = false;
+  function renderScrollState() {
+    var max = Math.max(1, root.scrollHeight - window.innerHeight);
+    var progress = Math.max(0, Math.min(1, window.scrollY / max));
+    root.style.setProperty('--page-progress', progress.toFixed(4));
+    if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 18);
+    queued = false;
+  }
+  function requestRender() {
+    if (!queued) {
+      queued = true;
+      window.requestAnimationFrame(renderScrollState);
+    }
+  }
+  window.addEventListener('scroll', requestRender, { passive: true });
+  window.addEventListener('resize', requestRender, { passive: true });
+  renderScrollState();
+})();
+</script></body>
 </html>
