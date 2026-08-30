@@ -1049,7 +1049,107 @@ html { scroll-padding-top: 78px; }
 @media (prefers-reduced-motion: reduce) {
   .scroll-progress { display: none; }
   .nav { transition: none; }
-}</style>
+}
+/* Mobile integrated cinematic hero: media and offer share the first viewport. */
+@media (max-width: 800px) {
+  .hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(720px, calc(100svh - 56px));
+    min-height: calc(100svh - 56px);
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .hero-media,
+  .hero-copy {
+    grid-area: 1 / 1;
+  }
+
+  .hero-media {
+    order: initial;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    max-height: none;
+  }
+
+  .hero-media img {
+    height: 100%;
+    object-position: 58% 32%;
+    filter: saturate(.78) contrast(1.08) brightness(.62);
+  }
+
+  .hero-media::before {
+    z-index: 2;
+    background:
+      linear-gradient(180deg, rgb(9 9 10 / .24) 0%, rgb(9 9 10 / .08) 27%, rgb(9 9 10 / .76) 65%, #09090a 100%),
+      linear-gradient(90deg, rgb(9 9 10 / .46), transparent 72%);
+  }
+
+  .hero-media::after {
+    inset: 14px;
+    border-color: rgb(244 239 230 / .13);
+  }
+
+  .hero-copy {
+    order: initial;
+    z-index: 3;
+    align-items: end;
+    min-width: 0;
+    padding: 116px 20px 32px;
+    color: var(--text);
+  }
+
+  .hero-copy > div {
+    width: 100%;
+  }
+
+  .hero h1 {
+    max-width: 9ch;
+    font-size: clamp(45px, 13.2vw, 62px);
+    text-shadow: 0 3px 28px rgb(0 0 0 / .72);
+  }
+
+  .hero-lead {
+    max-width: 32ch;
+    margin: 20px 0 22px;
+    color: rgb(244 239 230 / .82);
+    font-size: 16px;
+    text-shadow: 0 2px 18px rgb(0 0 0 / .82);
+  }
+
+  .hero .button-primary {
+    width: 100%;
+    max-width: 390px;
+  }
+
+  .hero .price-note {
+    color: rgb(244 239 230 / .64);
+    text-shadow: 0 2px 12px rgb(0 0 0 / .9);
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    grid-template-rows: minmax(680px, calc(100svh - 56px));
+  }
+
+  .hero-copy {
+    padding: 104px 18px 26px;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 13.8vw, 56px);
+  }
+
+  .hero-media img {
+    object-position: 58% 30%;
+  }
+}
+</style>
 <link href="https://kviatcovskii.github.io/hustlestack-site/" rel="canonical"/><meta content="en_US" property="og:locale"/></head>
 <body>
 <div class="scroll-progress" aria-hidden="true"></div>
