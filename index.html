@@ -1,11 +1,949 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The AI Avatar Playbook | HustleStack</title><meta name="description" content="Build a consistent AI avatar and the content system around it. Complete English and Spanish guides included."><link rel="canonical" href="https://kviatcovskii.github.io/hustlestack-site/"><link rel="alternate" hreflang="en" href="https://kviatcovskii.github.io/hustlestack-site/"><link rel="alternate" hreflang="es" href="https://kviatcovskii.github.io/hustlestack-site/es/"><meta property="og:title" content="The AI Avatar Playbook | HustleStack"><meta property="og:description" content="Build a consistent AI avatar and the content system around it. Complete English and Spanish guides included."><meta property="og:image" content="https://raw.githubusercontent.com/kviatcovskii/hustlestack-site/main/assets/landing/avatar-hero-sells.jpg"><script>try{var c=localStorage.getItem('hs-language-choice');if(c==='es')location.replace('/hustlestack-site/es/');else if(!c&&/^es/i.test((navigator.languages&&navigator.languages[0])||navigator.language||'')&&localStorage.getItem('hs-auto-es')!=='1'){localStorage.setItem('hs-auto-es','1');location.replace('/hustlestack-site/es/')}}catch(e){}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#09090a;--ink:#f3efe9;--muted:#aaa49d;--line:#ffffff26;--accent:#dc755b;--serif:"Bodoni Moda","Bodoni 72",Didot,Georgia,serif;--sans:"IBM Plex Sans","Helvetica Neue",sans-serif;--max:1180px}*{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at 8% 2%,#dc755b12,transparent 25rem),repeating-linear-gradient(96deg,transparent 0 8px,#ffffff03 9px),var(--bg);font:17px/1.65 var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit}.shell{width:min(calc(100% - 48px),var(--max));margin:auto}.header{height:76px;border-bottom:1px solid var(--line)}nav{height:100%;display:flex;align-items:center;justify-content:space-between}.brand,h1,h2,h3{font-family:var(--serif);font-weight:500}.brand{font-size:23px;text-decoration:none}.nav-right,.lang,.offer{display:flex;align-items:center;gap:20px}.nav-cta{font-size:13px;text-decoration:none;border-bottom:1px solid var(--accent)}.lang{gap:9px;font-size:12px;font-weight:600}.lang a{color:var(--muted);text-decoration:none}.lang a[aria-current=page]{color:var(--ink)}
-.hero{min-height:calc(100dvh - 76px);display:grid;grid-template-columns:1fr minmax(380px,.78fr);align-items:center;gap:clamp(42px,7vw,106px);padding:60px 0}.label{color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.11em;text-transform:uppercase}.hero .label{margin:0 0 20px}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(49px,6vw,80px);line-height:.99;letter-spacing:-.045em;margin-bottom:22px}h2{font-size:clamp(38px,4.5vw,62px);line-height:1.04;letter-spacing:-.035em;margin-bottom:22px}h3{font-size:clamp(25px,2.3vw,34px);line-height:1.15;margin-bottom:9px}.line{display:block;overflow:clip;padding:.02em 0 .1em}.line>span{display:block}.lead{max-width:590px;color:var(--muted);font-size:clamp(17px,1.5vw,20px);margin-bottom:29px}.button{display:inline-flex;min-height:52px;align-items:center;justify-content:center;padding:0 24px;background:var(--accent);border:1px solid var(--accent);color:#100c0b;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;transition:.2s}.button:hover{background:var(--ink);border-color:var(--ink)}.price{display:grid;color:var(--muted);font-size:13px;line-height:1.3}.price b{color:var(--ink);font-size:20px;font-weight:500}.portrait{position:relative;min-height:min(680px,72dvh);overflow:hidden;border:1px solid var(--line);background:#171413}.portrait:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,#09090a88),repeating-radial-gradient(circle,transparent 0 3px,#ffffff08 4px);pointer-events:none}.portrait img{width:100%;height:100%;min-height:inherit;object-fit:cover;object-position:52% center;filter:saturate(.78) contrast(1.06) brightness(.84);transform:scale(1.045) translateY(var(--py,0));will-change:transform}
-.section{padding:clamp(88px,11vw,150px) 0;border-top:1px solid var(--line)}.split{display:grid;grid-template-columns:.55fr 1.2fr;gap:clamp(48px,9vw,145px)}.copy p{max-width:660px;color:var(--muted);font-size:clamp(18px,1.7vw,22px)}.copy .bright{color:var(--ink)}.method{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid var(--line);margin-top:55px}.step{min-height:290px;padding:30px 38px 38px}.step:first-child{padding-left:0}.step+.step{border-left:1px solid var(--line)}.num{display:block;color:var(--accent);font-size:12px;margin-bottom:65px}.step p,.edition p,.learn p{color:var(--muted);font-size:15px}.editions{display:grid;grid-template-columns:.72fr 1fr 1fr;border-block:1px solid var(--line)}.edition{padding:40px clamp(28px,4vw,52px);border-left:1px solid var(--line)}.edition-intro{padding:40px 34px 40px 0}.edition ul,.audience ul{list-style:none;margin:25px 0 0;padding:0}.edition li,.audience li{padding:14px 0;border-top:1px solid var(--line);color:var(--muted);font-size:15px}.edition li:last-child,.audience li:last-child{border-bottom:1px solid var(--line)}.build{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(55px,10vw,145px)}.build-copy{position:sticky;top:35px;align-self:start}.build-copy p{color:var(--muted)}.learning{border-top:1px solid var(--line)}.learn{display:grid;grid-template-columns:45px 1fr;gap:20px;padding:27px 0;border-bottom:1px solid var(--line)}.learn .num{margin:5px 0 0}.learn p{margin:0}.audiences{display:grid;grid-template-columns:1fr 1fr;gap:clamp(50px,9vw,125px)}.audience+.audience{padding-left:clamp(45px,7vw,90px);border-left:1px solid var(--line)}.faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:clamp(55px,9vw,135px)}.faq{border-top:1px solid var(--line)}details{border-bottom:1px solid var(--line)}summary{cursor:pointer;list-style:none;padding:23px 38px 23px 0;font:500 clamp(21px,2vw,28px)/1.25 var(--serif)}summary::-webkit-details-marker{display:none}.answer{padding:0 30px 25px 0;color:var(--muted);font-size:15px}.final{min-height:72dvh;display:grid;grid-template-columns:1fr auto;align-items:end;gap:55px;padding:130px 0 70px}.final h2{margin:0}.final-action{display:grid;gap:12px}.final-action p{color:var(--muted);font-size:13px}.footer{padding:27px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.footer div{display:flex;justify-content:space-between}
-[data-r=text]{opacity:0;transform:translateY(17px);transition:opacity .72s cubic-bezier(.22,.68,0,1) var(--d,0ms),transform .72s cubic-bezier(.22,.68,0,1) var(--d,0ms)}[data-r=lines] .line>span{opacity:0;transform:translateY(110%);transition:.82s cubic-bezier(.22,.68,0,1)}[data-r=lines] .line:nth-child(2)>span{transition-delay:90ms}[data-r].on{opacity:1;transform:none}[data-r=lines].on .line>span{opacity:1;transform:none}@media(max-width:900px){.hero,.split,.build,.faq-grid{grid-template-columns:1fr}.portrait{min-height:580px}.method{grid-template-columns:1fr}.step{min-height:0;padding:28px 0}.step+.step{border-left:0;border-top:1px solid var(--line)}.num{margin-bottom:28px}.editions{grid-template-columns:1fr 1fr}.edition-intro{grid-column:1/-1;border-bottom:1px solid var(--line)}.edition:first-of-type{border-left:0}.build-copy{position:static}.final{grid-template-columns:1fr;min-height:auto}}@media(max-width:640px){.shell{width:calc(100% - 32px)}.header{height:68px}.nav-cta{display:none}.hero{padding:38px 0 72px;gap:36px}h1{font-size:clamp(43px,12.7vw,58px)}h2{font-size:clamp(35px,10.4vw,48px)}.portrait{min-height:500px}.section{padding:85px 0}.editions,.audiences{grid-template-columns:1fr}.edition-intro{padding-right:0}.edition,.edition:first-of-type{padding:32px 0;border-left:0;border-top:1px solid var(--line)}.audiences{gap:60px}.audience+.audience{padding-left:0;border-left:0}.button{width:100%}.footer div{flex-direction:column;gap:7px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}[data-r=text],[data-r=lines] .line>span{opacity:1!important;transform:none!important;transition:none!important}.portrait img{transform:none!important}}</style></head><body><header class="header"><nav class="shell" aria-label="Primary navigation"><a class="brand" href="/hustlestack-site/" data-r="text">HustleStack</a><div class="nav-right"><a class="nav-cta" href="#buy" data-r="text">Get the guides</a><div class="lang" data-r="text"><a href="/hustlestack-site/" aria-current="page" data-lang="en">EN</a><span>|</span><a href="/hustlestack-site/es/"  data-lang="es">ES</a></div></div></nav></header><main>
-<section class="hero shell"><div><p class="label" data-r="text">The AI Avatar Playbook</p><h1 data-r="lines"><span class="line"><span>Build the creator</span></span><span class="line"><span>behind the camera.</span></span></h1><p class="lead" data-r="text">Two complete guides show you how to create a consistent avatar, plan content, and connect it to TikTok Shop Affiliate.</p><div class="offer"><a class="button" href="https://pay.kiwify.com/f68zred" target="_blank" rel="noopener" data-r="text">Get both guides</a><div class="price" data-r="text"><b>$30</b><span>One payment. English and Spanish included.</span></div></div></div><div class="portrait" data-r="text"><img src="assets/landing/avatar-hero-sells.jpg" alt="Sadie at a creator desk with a phone and ring light"><span></span></div></section>
-<section class="section"><div class="split shell"><p class="label" data-r="text">The real problem</p><div class="copy"><h2 data-r="lines"><span class="line"><span>A face is not</span></span><span class="line"><span>a content system.</span></span></h2><p data-r="text">Most avatar experiments stop after the first image. The character changes and every post begins from zero.</p><p class="bright" data-r="text">The useful part is a recognisable creator, a repeatable editorial process, and a clear route from content to product.</p></div></div></section>
-<section class="section"><div class="shell"><p class="label" data-r="text">The method</p><h2 data-r="lines"><span class="line"><span>One identity.</span></span><span class="line"><span>Three working layers.</span></span></h2><div class="method"><article class="step" data-r="text"><span class="num">01</span><h3>Identity</h3><p>Create Sadie with rules for face, setting, tone, and disclosure.</p></article><article class="step" data-r="text"><span class="num">02</span><h3>Editorial rhythm</h3><p>Turn product research into useful scripts and scenes.</p></article><article class="step" data-r="text"><span class="num">03</span><h3>Commerce</h3><p>Understand product fit and the TikTok Shop Affiliate workflow.</p></article></div></div></section>
-<section class="section"><div class="shell"><div class="editions"><div class="edition-intro"><p class="label" data-r="text">Inside the purchase</p><h2 data-r="lines"><span class="line"><span>Two complete</span></span><span class="line"><span>editions.</span></span></h2><p data-r="text">One product delivered in both languages, not a shortened translation.</p></div><article class="edition"><p class="label" data-r="text">English edition</p><h3 data-r="lines"><span class="line"><span>The AI Avatar Playbook</span></span></h3><p data-r="text">The full method in clear English.</p><ul><li data-r="text">Avatar and connector setup</li><li data-r="text">Scripts and product content</li><li data-r="text">Affiliate workflow</li><li data-r="text">Disclosure and mistakes</li></ul></article><article class="edition"><p class="label" data-r="text">Spanish edition</p><h3 data-r="lines"><span class="line"><span>Complete Spanish edition</span></span></h3><p data-r="text">The same complete system for Spanish-speaking creators.</p><ul><li data-r="text">Full method, not a summary</li><li data-r="text">The same practical sequence</li><li data-r="text">Delivered with the English guide</li></ul></article></div></div></section>
-<section class="section"><div class="build shell"><div class="build-copy"><p class="label" data-r="text">What you will build</p><h2 data-r="lines"><span class="line"><span>A creator people</span></span><span class="line"><span>can recognise.</span></span></h2><p data-r="text">A system you can operate, adjust, and repeat. It is not a promise of reach, sales, or income.</p></div><div class="learning"><article class="learn" data-r="text"><span class="num">01</span><div><h3>A consistent character</h3><p>Keep one identity across photos and videos.</p></div></article><article class="learn" data-r="text"><span class="num">02</span><div><h3>A practical brief</h3><p>Direct a compatible AI assistant without locking into one provider.</p></div></article><article class="learn" data-r="text"><span class="num">03</span><div><h3>A repeatable flow</h3><p>Move from product idea to script, scene, disclosure, and plan.</p></div></article><article class="learn" data-r="text"><span class="num">04</span><div><h3>An honest sales layer</h3><p>Connect content to products without hiding the rules.</p></div></article></div></div></section>
-<section class="section"><div class="audiences shell"><div class="audience"><p class="label" data-r="text">This is for you if</p><h2 data-r="lines"><span class="line"><span>You want a system,</span></span><span class="line"><span>not a novelty.</span></span></h2><ul><li data-r="text">You want a creator identity without filming yourself.</li><li data-r="text">You will learn, refine, and disclose the output.</li></ul></div><div class="audience"><p class="label" data-r="text">Skip it if</p><h2 data-r="lines"><span class="line"><span>You need a result</span></span><span class="line"><span>promised to you.</span></span></h2><ul><li data-r="text">You expect an avatar to create demand alone.</li><li data-r="text">You need guaranteed followers, sales, or income.</li></ul></div></div></section><section class="section"><div class="faq-grid shell"><div><p class="label" data-r="text">Before you buy</p><h2 data-r="lines"><span class="line"><span>Questions,</span></span><span class="line"><span>answered plainly.</span></span></h2></div><div class="faq"><details data-r="text"><summary>Do I have to show my face?</summary><div class="answer">No. A consistent avatar appears instead of you.</div></details><details data-r="text"><summary>Are results guaranteed?</summary><div class="answer">No. Product fit, content, consistency, market conditions, and distribution affect outcomes.</div></details><details data-r="text"><summary>Which languages are included?</summary><div class="answer">The complete English and Spanish editions arrive together.</div></details><details data-r="text"><summary>Is this tied to one AI assistant?</summary><div class="answer">No. You can choose a compatible provider.</div></details><details data-r="text"><summary>How is it delivered?</summary><div class="answer">The payment platform emails the digital guides after confirmation.</div></details></div></div></section>
-<section class="section" id="buy"><div class="final shell"><h2 data-r="lines"><span class="line"><span>Build the identity.</span></span><span class="line"><span>Then build the system.</span></span></h2><div class="final-action"><a class="button" href="https://pay.kiwify.com/f68zred" target="_blank" rel="noopener" data-r="text">Get both guides for $30</a><p data-r="text">One payment. Both editions included.</p></div></div></section></main><footer class="footer"><div class="shell"><span data-r="text">HustleStack</span><span data-r="text">No results are promised or guaranteed.</span></div></footer><script>(function(){document.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('hs-language-choice',a.dataset.lang)}catch(e){}})});var n=document.querySelectorAll('[data-r]'),z=matchMedia('(prefers-reduced-motion: reduce)').matches;if(z||!('IntersectionObserver'in window)){n.forEach(function(x){x.classList.add('on')})}else{var o=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting){i.target.classList.add('on');o.unobserve(i.target)}})},{threshold:.12,rootMargin:'0px 0px -7% 0px'});n.forEach(function(x){o.observe(x)})}if(z)return;var p=document.querySelector('.portrait'),m=p&&p.querySelector('img'),v=false;if(!p||!m)return;new IntersectionObserver(function(e){v=e[0].isIntersecting}).observe(p);function f(){if(v){var b=p.getBoundingClientRect(),q=Math.max(0,Math.min(1,(innerHeight-b.top)/(innerHeight+b.height)));m.style.setProperty('--py',((q-.5)*24).toFixed(1)+'px')}requestAnimationFrame(f)}f()})();</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Avatar Playbook | HustleStack</title>
+  <meta name="description" content="A practical playbook for building a consistent virtual creator, planning product-led content, and understanding the TikTok Shop affiliate workflow.">
+  <meta name="theme-color" content="#f2f3ee">
+  <meta property="og:title" content="AI Avatar Playbook | HustleStack">
+  <meta property="og:description" content="Build a consistent virtual creator and a repeatable content workflow.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/landing/avatar-hero-sells.jpg">
+  <link rel="canonical" href="./">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/landing/avatar-hero-sells.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f2f3ee;
+      --paper-deep: #e6e8e0;
+      --ink: #171a18;
+      --muted: #5f655f;
+      --line: #cdd1c8;
+      --accent: #df5b40;
+      --accent-dark: #a93320;
+      --white: #fbfcf8;
+      --font: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --max: 1240px;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 8%, rgba(223, 91, 64, .09), transparent 28rem),
+        linear-gradient(180deg, var(--paper) 0%, #eef0ea 100%);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button, summary, a { -webkit-tap-highlight-color: transparent; }
+
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .shell {
+      width: min(calc(100% - 56px), var(--max));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 5;
+      height: 72px;
+      border-bottom: 1px solid rgba(23, 26, 24, .14);
+    }
+
+    .site-header nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 21px;
+      font-weight: 760;
+      letter-spacing: -.04em;
+      text-decoration: none;
+    }
+
+    .header-cta {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 690;
+      text-decoration: none;
+      border-bottom: 2px solid var(--accent);
+      padding-block: 4px;
+    }
+
+    .hero {
+      min-height: calc(100dvh - 72px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(350px, .78fr);
+      align-items: center;
+      gap: clamp(52px, 8vw, 126px);
+      padding-block: clamp(44px, 7vh, 76px);
+    }
+
+    .eyebrow {
+      margin: 0 0 22px;
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 760;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2, h3 {
+      font-family: var(--font);
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 24px;
+      font-size: clamp(54px, 6.35vw, 88px);
+      font-stretch: 82%;
+      font-weight: 720;
+      letter-spacing: -.068em;
+      line-height: .91;
+    }
+
+    h2 {
+      max-width: 850px;
+      margin-bottom: 24px;
+      font-size: clamp(42px, 5.2vw, 72px);
+      font-stretch: 84%;
+      font-weight: 680;
+      letter-spacing: -.058em;
+      line-height: .96;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: clamp(25px, 2.4vw, 34px);
+      font-weight: 650;
+      letter-spacing: -.038em;
+      line-height: 1.03;
+    }
+
+    .title-line {
+      display: block;
+      overflow: clip;
+      padding: .02em .06em .09em 0;
+    }
+
+    .title-line > span {
+      display: block;
+      transform-origin: left bottom;
+    }
+
+    .hero-copy {
+      align-self: center;
+      padding-top: 6px;
+    }
+
+    .hero-lead {
+      max-width: 620px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: clamp(18px, 1.55vw, 21px);
+      line-height: 1.48;
+    }
+
+    .hero-offer {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .price {
+      min-width: 70px;
+      font-size: clamp(27px, 2.8vw, 38px);
+      font-weight: 760;
+      letter-spacing: -.06em;
+      line-height: 1;
+    }
+
+    .button {
+      min-height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 27px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 720;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform .22s var(--ease), background .22s ease, color .22s ease;
+    }
+
+    .button:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--ink);
+    }
+
+    .button:active { transform: translateY(1px) scale(.985); }
+
+    .hero-portrait {
+      position: relative;
+      width: min(100%, 500px);
+      justify-self: end;
+      padding: 0 0 26px 26px;
+      isolation: isolate;
+    }
+
+    .hero-portrait::before {
+      content: "";
+      position: absolute;
+      inset: 13% 10% 0 0;
+      z-index: -1;
+      border-radius: 28px;
+      background: var(--accent);
+      transform: translate(-26px, 26px);
+    }
+
+    .hero-portrait img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: 50% center;
+      border-radius: 28px;
+      filter: saturate(.88) contrast(1.03);
+      box-shadow: 0 30px 70px rgba(44, 48, 42, .18);
+    }
+
+    .section {
+      padding-block: clamp(92px, 12vw, 164px);
+      border-top: 1px solid var(--line);
+    }
+
+    .problem-layout {
+      display: grid;
+      grid-template-columns: minmax(220px, .48fr) minmax(0, 1.25fr);
+      gap: clamp(48px, 10vw, 150px);
+      align-items: start;
+    }
+
+    .section-kicker {
+      margin: 9px 0 0;
+      color: var(--accent-dark);
+      font-size: 15px;
+      font-weight: 720;
+    }
+
+    .problem-copy p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: clamp(19px, 2vw, 25px);
+      line-height: 1.5;
+    }
+
+    .problem-copy .strong {
+      color: var(--ink);
+      font-weight: 610;
+    }
+
+    .method-header,
+    .contents-header,
+    .faq-header {
+      max-width: 820px;
+      margin-bottom: clamp(48px, 7vw, 86px);
+    }
+
+    .method-header p,
+    .contents-header p,
+    .faq-header p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .method-flow {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(34px, 6vw, 84px);
+      padding-top: 38px;
+    }
+
+    .method-flow::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent) 0 33%, var(--ink) 33% 66%, var(--line) 66%);
+    }
+
+    .method-part {
+      position: relative;
+      padding-right: 12px;
+    }
+
+    .method-part::before {
+      content: "";
+      position: absolute;
+      top: -45px;
+      left: 0;
+      width: 14px;
+      height: 14px;
+      border: 3px solid var(--paper);
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+
+    .method-part:nth-child(2)::before { background: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+    .method-part:nth-child(3)::before { background: #9ca19a; box-shadow: 0 0 0 1px #9ca19a; }
+
+    .method-part p {
+      max-width: 330px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .contents {
+      background: rgba(230, 232, 224, .63);
+    }
+
+    .syllabus {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: clamp(52px, 10vw, 150px);
+      row-gap: 0;
+    }
+
+    .syllabus-item {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 22px;
+      padding-block: 31px;
+      border-top: 1px solid var(--line);
+    }
+
+    .syllabus-item:nth-last-child(-n + 2) { border-bottom: 1px solid var(--line); }
+
+    .syllabus-mark {
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 760;
+      padding-top: 5px;
+    }
+
+    .syllabus-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .audience-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .audience-block {
+      min-width: 0;
+      padding-right: clamp(42px, 7vw, 92px);
+    }
+
+    .audience-block + .audience-block {
+      padding: 0 0 0 clamp(42px, 7vw, 92px);
+      border-left: 1px solid var(--line);
+    }
+
+    .audience-block h2 {
+      font-size: clamp(38px, 4.4vw, 61px);
+    }
+
+    .audience-list {
+      list-style: none;
+      padding: 0;
+      margin: 38px 0 0;
+    }
+
+    .audience-list li {
+      position: relative;
+      max-width: 480px;
+      margin-bottom: 18px;
+      padding-left: 26px;
+      color: var(--muted);
+    }
+
+    .audience-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .72em;
+      width: 10px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, .62fr) minmax(0, 1.15fr);
+      gap: clamp(52px, 10vw, 150px);
+      align-items: start;
+    }
+
+    .faq-header {
+      position: sticky;
+      top: 32px;
+      margin-bottom: 0;
+    }
+
+    .faq-header h2 {
+      font-size: clamp(42px, 4.8vw, 66px);
+    }
+
+    .faq-list { border-top: 1px solid var(--line); }
+
+    details { border-bottom: 1px solid var(--line); }
+
+    summary {
+      position: relative;
+      cursor: pointer;
+      list-style: none;
+      padding: 25px 52px 25px 0;
+      font-size: clamp(19px, 1.8vw, 24px);
+      font-weight: 640;
+      letter-spacing: -.025em;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 4px;
+      top: 20px;
+      color: var(--accent-dark);
+      font-size: 28px;
+      font-weight: 400;
+      transition: transform .25s var(--ease);
+    }
+
+    details[open] summary::after { transform: rotate(45deg); }
+
+    .answer {
+      max-width: 650px;
+      padding: 0 45px 25px 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .final-section {
+      min-height: 76dvh;
+      display: grid;
+      align-items: end;
+      background: var(--ink);
+      color: var(--white);
+      border-top: 0;
+    }
+
+    .final-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 52px;
+      align-items: end;
+    }
+
+    .final-layout h2 {
+      max-width: 830px;
+      margin: 0;
+      font-size: clamp(50px, 6.5vw, 91px);
+    }
+
+    .final-action {
+      display: grid;
+      justify-items: start;
+      gap: 14px;
+      padding-bottom: 10px;
+    }
+
+    .final-action .price {
+      color: var(--white);
+      font-size: 34px;
+    }
+
+    .final-action .button {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--ink);
+    }
+
+    .final-action .button:hover {
+      border-color: var(--white);
+      background: var(--white);
+    }
+
+    .site-footer {
+      background: var(--ink);
+      color: #b9bdb6;
+      border-top: 1px solid #393d39;
+      padding-block: 25px;
+      font-size: 13px;
+    }
+
+    .site-footer .shell {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    html.motion-ready [data-reveal="item"] {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+
+    html.motion-ready [data-reveal="title"] .title-line > span {
+      opacity: 0;
+      transform: translateY(108%);
+    }
+
+    html.motion-ready [data-reveal="item"].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity .72s var(--ease) var(--delay, 0ms),
+        transform .72s var(--ease) var(--delay, 0ms);
+    }
+
+    html.motion-ready [data-reveal="title"].is-visible .title-line > span {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity .78s var(--ease) calc(var(--delay, 0ms) + var(--line-delay, 0ms)),
+        transform .78s var(--ease) calc(var(--delay, 0ms) + var(--line-delay, 0ms));
+    }
+
+    [data-reveal="title"] .title-line:nth-child(2) > span { --line-delay: 90ms; }
+    [data-reveal="title"] .title-line:nth-child(3) > span { --line-delay: 180ms; }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-block: 64px 90px;
+      }
+
+      .hero-copy { max-width: 780px; }
+
+      .hero-portrait {
+        width: min(78vw, 570px);
+        justify-self: center;
+      }
+
+      .problem-layout,
+      .faq-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .problem-layout { gap: 30px; }
+
+      .method-flow {
+        grid-template-columns: 1fr;
+        gap: 54px;
+        padding: 0 0 0 34px;
+      }
+
+      .method-flow::before {
+        top: 0;
+        bottom: 0;
+        left: 6px;
+        right: auto;
+        width: 2px;
+        height: auto;
+        background: linear-gradient(180deg, var(--accent), var(--ink), var(--line));
+      }
+
+      .method-part::before {
+        top: 7px;
+        left: -34px;
+      }
+
+      .faq-header {
+        position: static;
+        margin-bottom: 24px;
+      }
+
+      .final-layout {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .shell { width: min(calc(100% - 34px), var(--max)); }
+
+      .site-header { height: 66px; }
+
+      .hero {
+        gap: 48px;
+        padding-block: 46px 78px;
+      }
+
+      h1 {
+        font-size: clamp(47px, 13.6vw, 64px);
+        line-height: .94;
+      }
+
+      h2 { font-size: clamp(39px, 11vw, 54px); }
+
+      .hero-lead { font-size: 17px; }
+
+      .hero-offer {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 17px;
+      }
+
+      .price { font-size: 32px; }
+
+      .button { width: 100%; }
+
+      .hero-portrait {
+        width: calc(100% - 18px);
+        padding: 0 0 18px 18px;
+      }
+
+      .hero-portrait::before {
+        border-radius: 22px;
+        transform: translate(-18px, 18px);
+      }
+
+      .hero-portrait img { border-radius: 22px; }
+
+      .section { padding-block: 88px; }
+
+      .syllabus,
+      .audience-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .syllabus-item:nth-last-child(-n + 2) { border-bottom: 0; }
+      .syllabus-item:last-child { border-bottom: 1px solid var(--line); }
+
+      .audience-block { padding-right: 0; }
+
+      .audience-block + .audience-block {
+        margin-top: 68px;
+        padding: 68px 0 0;
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+
+      .final-section {
+        min-height: auto;
+        padding-block: 110px 74px;
+      }
+
+      .final-layout h2 { font-size: clamp(46px, 13vw, 66px); }
+
+      .final-action { width: 100%; }
+
+      .site-footer .shell {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      html.motion-ready [data-reveal="item"],
+      html.motion-ready [data-reveal="title"] .title-line > span {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .button, summary::after { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="shell" aria-label="Primary navigation">
+      <a class="brand" href="./" data-reveal="item">HustleStack</a>
+      <a class="header-cta" href="#buy" data-reveal="item">Get the playbook</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow" data-reveal="item">AI Avatar Playbook</p>
+        <h1 data-reveal="title">
+          <span class="title-line"><span>Build a creator</span></span>
+          <span class="title-line"><span>people recognize.</span></span>
+        </h1>
+        <p class="hero-lead" data-reveal="item">Create a consistent virtual creator, plan product-led content, and understand the TikTok Shop affiliate workflow.</p>
+        <div class="hero-offer">
+          <span class="price" data-reveal="item">$30</span>
+          <a class="button" href="https://pay.kiwify.com/f68zred" target="_blank" rel="noopener" data-reveal="item">Get the playbook</a>
+        </div>
+      </div>
+
+      <figure class="hero-portrait" data-reveal="item">
+        <img src="assets/landing/avatar-hero-sells.jpg" alt="Sadie at a creator desk with a phone and ring light" width="1200" height="1500">
+      </figure>
+    </section>
+
+    <section class="section">
+      <div class="problem-layout shell">
+        <p class="section-kicker" data-reveal="item">The real problem</p>
+        <div class="problem-copy">
+          <h2 data-reveal="title">
+            <span class="title-line"><span>A good image is not</span></span>
+            <span class="title-line"><span>a content system.</span></span>
+          </h2>
+          <p data-reveal="item">Most avatar experiments stop at the first portrait. The face changes, the voice drifts, and every post starts from zero.</p>
+          <p class="strong" data-reveal="item">You need a recognizable identity, clear creative rules, and a workflow you can repeat without pretending the avatar runs itself.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="method-header">
+          <h2 data-reveal="title">
+            <span class="title-line"><span>One identity.</span></span>
+            <span class="title-line"><span>One practical flow.</span></span>
+          </h2>
+          <p data-reveal="item">The playbook moves from character direction to content planning, then connects that work to an affiliate offer.</p>
+        </div>
+
+        <div class="method-flow">
+          <article class="method-part">
+            <h3 data-reveal="title"><span class="title-line"><span>Set the identity</span></span></h3>
+            <p data-reveal="item">Define the face, visual rules, voice, scenes, and disclosure that keep the character coherent.</p>
+          </article>
+          <article class="method-part">
+            <h3 data-reveal="title"><span class="title-line"><span>Build the rhythm</span></span></h3>
+            <p data-reveal="item">Turn product details into clear scripts, shots, narration, and a repeatable publishing routine.</p>
+          </article>
+          <article class="method-part">
+            <h3 data-reveal="title"><span class="title-line"><span>Connect the offer</span></span></h3>
+            <p data-reveal="item">Understand the TikTok Shop affiliate workflow and create content that serves the product honestly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contents">
+      <div class="shell">
+        <div class="contents-header">
+          <h2 data-reveal="title">
+            <span class="title-line"><span>What the playbook</span></span>
+            <span class="title-line"><span>helps you build.</span></span>
+          </h2>
+          <p data-reveal="item">A focused operating guide for the decisions that matter after you create the first avatar.</p>
+        </div>
+
+        <div class="syllabus">
+          <article class="syllabus-item" data-reveal="item">
+            <span class="syllabus-mark">01</span>
+            <div>
+              <h3 data-reveal="title"><span class="title-line"><span>Character consistency</span></span></h3>
+              <p>Create and maintain one recognizable avatar with clear visual constraints.</p>
+            </div>
+          </article>
+          <article class="syllabus-item" data-reveal="item">
+            <span class="syllabus-mark">02</span>
+            <div>
+              <h3 data-reveal="title"><span class="title-line"><span>Prompting and direction</span></span></h3>
+              <p>Brief compatible AI tools with decisions about face, framing, environment, and tone.</p>
+            </div>
+          </article>
+          <article class="syllabus-item" data-reveal="item">
+            <span class="syllabus-mark">03</span>
+            <div>
+              <h3 data-reveal="title"><span class="title-line"><span>Product-led scripts</span></span></h3>
+              <p>Translate product details into short-form hooks, scenes, and useful demonstrations.</p>
+            </div>
+          </article>
+          <article class="syllabus-item" data-reveal="item">
+            <span class="syllabus-mark">04</span>
+            <div>
+              <h3 data-reveal="title"><span class="title-line"><span>Content workflow</span></span></h3>
+              <p>Move from idea to script, image, voice, edit, disclosure, and publishing plan.</p>
+            </div>
+          </article>
+          <article class="syllabus-item" data-reveal="item">
+            <span class="syllabus-mark">05</span>
+            <div>
+              <h3 data-reveal="title"><span class="title-line"><span>Affiliate foundations</span></span></h3>
+              <p>Understand the role of TikTok Shop affiliate content without treating it as guaranteed income.</p>
+            </div>
+          </article>
+          <article class="syllabus-item" data-reveal="item">
+            <span class="syllabus-mark">06</span>
+            <div>
+              <h3 data-reveal="title"><span class="title-line"><span>Disclosure and iteration</span></span></h3>
+              <p>Label AI-created content clearly, review performance, and improve the process over time.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="audience-layout shell">
+        <div class="audience-block">
+          <h2 data-reveal="title">
+            <span class="title-line"><span>This is for you</span></span>
+            <span class="title-line"><span>if you want a system.</span></span>
+          </h2>
+          <ul class="audience-list">
+            <li data-reveal="item">You want a creator identity without being on camera for every post.</li>
+            <li data-reveal="item">You are ready to direct, test, and improve the work yourself.</li>
+            <li data-reveal="item">You want a clear path from product research to publishable content.</li>
+          </ul>
+        </div>
+
+        <div class="audience-block">
+          <h2 data-reveal="title">
+            <span class="title-line"><span>It is not for you</span></span>
+            <span class="title-line"><span>if you want a shortcut.</span></span>
+          </h2>
+          <ul class="audience-list">
+            <li data-reveal="item">You expect guaranteed followers, sales, revenue, or reach.</li>
+            <li data-reveal="item">You want a one-click system that needs no creative decisions.</li>
+            <li data-reveal="item">You are unwilling to disclose that the creator is AI-generated.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="faq-layout shell">
+        <div class="faq-header">
+          <h2 data-reveal="title">
+            <span class="title-line"><span>Questions before</span></span>
+            <span class="title-line"><span>you buy.</span></span>
+          </h2>
+          <p data-reveal="item">Clear answers about the guide, the tools, and what results depend on.</p>
+        </div>
+
+        <div class="faq-list">
+          <details data-reveal="item">
+            <summary>Do I need to show my face?</summary>
+            <div class="answer">No. The workflow is built around a consistent virtual creator that appears in your content.</div>
+          </details>
+          <details data-reveal="item">
+            <summary>Are the AI tools included?</summary>
+            <div class="answer">No. The playbook teaches the workflow. External AI, editing, and publishing tools may have their own plans or usage costs.</div>
+          </details>
+          <details data-reveal="item">
+            <summary>Does this guarantee sales or earnings?</summary>
+            <div class="answer">No. Results depend on the product, content quality, consistency, market demand, distribution, and your decisions.</div>
+          </details>
+          <details data-reveal="item">
+            <summary>What do I receive?</summary>
+            <div class="answer">You receive the AI Avatar Playbook as a practical digital guide delivered after payment confirmation.</div>
+          </details>
+          <details data-reveal="item">
+            <summary>How is it delivered?</summary>
+            <div class="answer">Kiwify sends access to the email used at checkout after the payment is confirmed.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-section" id="buy">
+      <div class="final-layout shell">
+        <h2 data-reveal="title">
+          <span class="title-line"><span>Build the identity.</span></span>
+          <span class="title-line"><span>Then build the rhythm.</span></span>
+        </h2>
+        <div class="final-action">
+          <span class="price" data-reveal="item">$30</span>
+          <a class="button" href="https://pay.kiwify.com/f68zred" target="_blank" rel="noopener" data-reveal="item">Get the playbook</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <span data-reveal="item">HustleStack</span>
+      <span data-reveal="item">No result is promised or guaranteed.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var elements = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
+      var counts = new Map();
+
+      elements.forEach(function (element) {
+        var group = element.closest("section, header, footer") || document.body;
+        var index = counts.get(group) || 0;
+        element.style.setProperty("--delay", Math.min(index, 5) * 70 + "ms");
+        counts.set(group, index + 1);
+      });
+
+      if (reduce || !("IntersectionObserver" in window)) {
+        elements.forEach(function (element) {
+          element.classList.add("is-visible");
+        });
+        return;
+      }
+
+      document.documentElement.classList.add("motion-ready");
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, {
+        threshold: 0.14,
+        rootMargin: "0px 0px -7% 0px"
+      });
+
+      elements.forEach(function (element) {
+        observer.observe(element);
+      });
+    }());
+  </script>
+</body>
+</html>
