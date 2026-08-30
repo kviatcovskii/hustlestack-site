@@ -921,7 +921,53 @@ h2 { font-size: clamp(38px, 4.8vw, 70px); }
   .hero-copy > div, .hero-media { animation: none; }
   .route > div { opacity: 1; transform: none; }
 }
-</style>
+
+/* Mobile conversion composition: keep the offer ahead of decorative media. */
+@media (max-width: 800px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-copy {
+    order: 1;
+    min-width: 0;
+    padding: 52px 20px 48px;
+  }
+  .hero-copy > div {
+    width: 100%;
+    min-width: 0;
+  }
+  .hero-media {
+    order: 2;
+    grid-row: auto;
+    height: clamp(340px, 96vw, 520px);
+    min-height: 340px;
+  }
+  .hero-lead {
+    max-width: 34ch;
+    overflow-wrap: break-word;
+  }
+  .hero .button-primary {
+    width: min(100%, 390px);
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-copy { padding: 44px 20px 42px; }
+  .hero h1 {
+    max-width: 9ch;
+    font-size: clamp(42px, 14vw, 56px);
+    line-height: .94;
+  }
+  .hero-media {
+    height: 82vw;
+    min-height: 300px;
+    max-height: 390px;
+  }
+  .hero-media img { object-position: 50% 38%; }
+  .hero .button-primary { text-align: left; }
+}</style>
 
 </head>
 <body>
