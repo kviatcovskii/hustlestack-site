@@ -1478,8 +1478,8 @@ html { scroll-padding-top: 78px; }
 <section class="revenue-story" id="routes">
 <aside class="route-visual" data-active-route="affiliate">
 <div class="route-visual-copy">
-<p class="overline">SIX COMMERCIAL ROUTES</p>
-<h2>One identity can serve different buyers.</h2>
+<p class="overline">FROM CREATION TO REVENUE</p>
+<h2>Five capabilities. Six commercial routes.</h2>
 </div>
 <ol aria-hidden="true" class="route-map">
 <li data-route-key="affiliate"><span>01</span><b>Affiliate</b></li>
@@ -1494,6 +1494,7 @@ html { scroll-padding-top: 78px; }
 <article class="route is-active" data-route="affiliate">
 <div>
 <p class="route-index">01</p>
+<p class="route-capability">CREATE + MONETIZE</p>
 <h3>Affiliate commerce</h3>
 <p class="route-promise">Recommend products you do not own and earn a commission when the content creates a sale.</p>
 <dl>
@@ -1507,6 +1508,7 @@ html { scroll-padding-top: 78px; }
 <article class="route" data-route="ugc">
 <div>
 <p class="route-index">02</p>
+<p class="route-capability">CREATE + PRODUCE</p>
 <h3>AI UGC ad packages</h3>
 <p class="route-promise">Sell a repeatable batch of hooks around one product while the avatar keeps the on-screen identity consistent.</p>
 <dl>
@@ -1520,6 +1522,7 @@ html { scroll-padding-top: 78px; }
 <article class="route" data-route="spokesperson">
 <div>
 <p class="route-index">03</p>
+<p class="route-capability">ANIMATE + PRODUCE</p>
 <h3>AI spokesperson videos</h3>
 <p class="route-promise">Give a business a consistent presenter for explanations, demos and localized versions without claiming false authority.</p>
 <dl>
@@ -1533,6 +1536,7 @@ html { scroll-padding-top: 78px; }
 <article class="route" data-route="product-visuals">
 <div>
 <p class="route-index">04</p>
+<p class="route-capability">CREATE + ANIMATE</p>
 <h3>Product visual production</h3>
 <p class="route-promise">Turn supplied product material into a coherent set of studio-style images and short videos.</p>
 <dl>
@@ -1546,6 +1550,7 @@ html { scroll-padding-top: 78px; }
 <article class="route" data-route="partnerships">
 <div>
 <p class="route-index">05</p>
+<p class="route-capability">PRODUCE + MONETIZE</p>
 <h3>Virtual influencer partnerships</h3>
 <p class="route-promise">Build a recognizable niche character first, then offer a brand a collaboration that fits the audience.</p>
 <dl>
@@ -1559,6 +1564,7 @@ html { scroll-padding-top: 78px; }
 <article class="route" data-route="digital-products">
 <div>
 <p class="route-index">06</p>
+<p class="route-capability">AUTOMATE + MONETIZE</p>
 <h3>Owned digital products</h3>
 <p class="route-promise">Package useful knowledge for the audience into an asset you control, from the product to the checkout.</p>
 <dl>
@@ -1576,7 +1582,15 @@ html { scroll-padding-top: 78px; }
 .free-prompts{padding:clamp(78px,10vw,150px) var(--gutter);background:#050908;color:#f4f5ee;border-top:1px solid #18332c;border-bottom:1px solid #18332c}
 .free-prompts-inner{width:min(100%,var(--max));margin:auto}.free-prompts-head{display:grid;grid-template-columns:1.15fr .7fr;gap:60px;align-items:end;margin-bottom:54px}.free-prompts h2{max-width:11ch;font-size:clamp(48px,7.5vw,108px);line-height:.88;letter-spacing:-.065em}.free-prompts-head>p{color:#aab7af;font-size:clamp(18px,2vw,24px)}.free-prompts .overline{color:#a6ff21}.prompt-gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.prompt-card{grid-column:span 6;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);min-height:520px;border:1px solid #244238;background:#09110e;overflow:hidden}.prompt-card:first-child{grid-column:span 12}.prompt-card img{width:100%;height:100%;object-fit:cover}.prompt-copy{display:flex;flex-direction:column;padding:clamp(24px,3vw,38px)}.prompt-copy span{color:#24f6dd;font:700 11px/1.3 var(--mono);letter-spacing:.14em}.prompt-copy h3{margin:18px 0;font:600 clamp(28px,3vw,42px)/1 var(--serif);letter-spacing:-.035em}.prompt-copy p{color:#c5cec9;font-size:14px;line-height:1.65}.copy-prompt{margin-top:auto;align-self:flex-start;border:0;border-bottom:1px solid #a6ff21;padding:18px 0 8px;background:transparent;color:#a6ff21;font:750 12px/1 var(--mono);letter-spacing:.12em;cursor:pointer}.copy-prompt.is-copied{color:#24f6dd;border-color:#24f6dd}.capability-strip{display:grid;grid-template-columns:repeat(5,1fr);margin-top:70px;border:1px solid #244238}.capability-strip article{min-height:190px;padding:25px;border-right:1px solid #244238}.capability-strip article:last-child{border-right:0}.capability-strip b{display:block;margin-bottom:15px;color:#a6ff21;font:700 11px/1.3 var(--mono);letter-spacing:.12em}.capability-strip h3{font:650 clamp(20px,2vw,28px)/1.05 var(--sans);letter-spacing:-.035em}.capability-strip p{margin-top:14px;color:#95a39b;font-size:14px;line-height:1.5}
 @media(max-width:900px){.free-prompts-head{grid-template-columns:1fr}.prompt-card,.prompt-card:first-child{grid-column:1/-1}.capability-strip{grid-template-columns:1fr 1fr}.capability-strip article{border-bottom:1px solid #244238}.capability-strip article:nth-child(2n){border-right:0}}
-@media(max-width:620px){.free-prompts{padding-inline:18px}.prompt-card{grid-template-columns:1fr}.prompt-card img{height:480px}.capability-strip{grid-template-columns:1fr}.capability-strip article{border-right:0}}
+/* Prompt sequence mirrors the commercial-route scroll rhythm. */
+.prompt-gallery{display:block;border-top:1px solid #244238}
+.prompt-card,.prompt-card:first-child{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);min-height:82vh;border:0;border-right:1px solid #244238;border-bottom:1px solid #244238;border-left:1px solid #244238;background:#09110e;overflow:visible}
+.prompt-card img{position:sticky;top:68px;width:100%;height:calc(100vh - 68px);object-fit:cover;border-right:1px solid #244238}
+.prompt-copy{justify-content:center;padding:clamp(40px,5vw,74px)}
+.prompt-copy p{font-size:clamp(15px,1.25vw,18px);line-height:1.72}
+.route-capability{margin:0 0 18px;color:#a6ff21;font:700 10px/1.3 var(--mono);letter-spacing:.14em}
+@media(max-width:900px){.free-prompts-head{grid-template-columns:1fr}.prompt-card,.prompt-card:first-child{grid-template-columns:minmax(0,.9fr) minmax(320px,1.1fr)}.prompt-card img{height:calc(100vh - 68px)}}
+@media(max-width:620px){.free-prompts{padding-inline:18px}.prompt-card,.prompt-card:first-child{display:block;min-height:0}.prompt-card img{position:relative;top:auto;height:min(72vh,620px);border-right:0;border-bottom:1px solid #244238}.prompt-copy{min-height:540px;padding:34px 24px}.prompt-copy p{font-size:15px}}
 </style>
 <section class="free-prompts" id="free-prompts">
 <div class="free-prompts-inner">
@@ -1588,7 +1602,6 @@ html { scroll-padding-top: 78px; }
 <article class="prompt-card"><img src="assets/free-prompts/04.png" alt="Palm-lined coastal avenue during a vivid sunset"><div class="prompt-copy"><span>PROMPT 04</span><h3>Neon coast sunset</h3><p>Ultra-realistic cinematic street photograph of an empty coastal Art Deco avenue lined with tall palm trees at an intense tropical sunset, low sun centered at the end of the road, fiery orange sky fading into dusty rose clouds, warm streetlamps already glowing, wet pavement and sidewalk reflecting amber light, pastel white buildings catching restrained pink illumination, strong leading lines, rich but natural color, realistic palm silhouettes, 35mm lens, editorial travel photography, vertical composition, no people, no cars, no text.</p><button class="copy-prompt" type="button">COPY PROMPT</button></div></article>
 <article class="prompt-card"><img src="assets/free-prompts/05.png" alt="Golden retriever watching sunset near a farmhouse and windmill"><div class="prompt-copy"><span>PROMPT 05</span><h3>Waiting at sunset</h3><p>Ultra-realistic emotional rural photograph from behind a golden retriever sitting quietly beside a weathered wooden fence, watching a blazing red-orange sunset over rolling prairie, an old timber farmhouse and tall metal windmill silhouetted on the ridge, sun touching the horizon, dramatic layered clouds illuminated from below, warm rim light outlining the dog fur, dry grasses and fence texture in sharp foreground detail, cinematic 50mm lens, natural depth, subtle film grain, vertical composition, no people, no text, no watermark.</p><button class="copy-prompt" type="button">COPY PROMPT</button></div></article>
 </div>
-<div class="capability-strip" aria-label="What HustleStack teaches"><article><b>CREATE</b><h3>AI images</h3><p>Direct realistic visuals with reusable prompt systems.</p></article><article><b>ANIMATE</b><h3>Cinematic motion</h3><p>Turn still frames into short scenes and landing-page visuals.</p></article><article><b>PRODUCE</b><h3>AI video</h3><p>Build repeatable video formats with consistent creative direction.</p></article><article><b>AUTOMATE</b><h3>Connected workflows</h3><p>Use connectors to generate, schedule and publish with less manual work.</p></article><article><b>MONETIZE</b><h3>Sell the output</h3><p>Package assets, services and digital products around useful results.</p></article></div>
 </div>
 </section>
 <section id="platform" class="hs-platform">
